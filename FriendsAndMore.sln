@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FriendsAndMore.UI", "FriendsAndMore.UI\FriendsAndMore.UI.csproj", "{4DC39AE7-CBB3-43EA-BC30-C6B61818B43C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FriendsAndMore.API", "FriendsAndMore.API\FriendsAndMore.API.csproj", "{9067FDA8-8CEB-4E14-A50A-C1E6AE89BA90}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FriendsAndMore.DataAccess", "FriendsAndMore.DataAccess\FriendsAndMore.DataAccess.csproj", "{F6B8E85D-2EA0-4F00-9AB7-8B802407FF1A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4DC39AE7-CBB3-43EA-BC30-C6B61818B43C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DC39AE7-CBB3-43EA-BC30-C6B61818B43C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DC39AE7-CBB3-43EA-BC30-C6B61818B43C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DC39AE7-CBB3-43EA-BC30-C6B61818B43C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9067FDA8-8CEB-4E14-A50A-C1E6AE89BA90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9067FDA8-8CEB-4E14-A50A-C1E6AE89BA90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9067FDA8-8CEB-4E14-A50A-C1E6AE89BA90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9067FDA8-8CEB-4E14-A50A-C1E6AE89BA90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6B8E85D-2EA0-4F00-9AB7-8B802407FF1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6B8E85D-2EA0-4F00-9AB7-8B802407FF1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6B8E85D-2EA0-4F00-9AB7-8B802407FF1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6B8E85D-2EA0-4F00-9AB7-8B802407FF1A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
