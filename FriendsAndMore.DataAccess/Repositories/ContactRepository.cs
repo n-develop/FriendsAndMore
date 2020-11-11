@@ -5,9 +5,16 @@ namespace FriendsAndMore.DataAccess.Repositories
 {
     public class ContactRepository : IContactRepository
     {
-        public Task<Contact> GetContactById(int contactId)
+        private readonly DatabaseContext _dbContext;
+
+        public ContactRepository(DatabaseContext dbContext)
         {
-            throw new System.NotImplementedException();
+            _dbContext = dbContext;
+        }
+        
+        public async Task<Contact> GetContactById(int contactId)
+        {
+            return await _dbContext.Contacts.FindAsync(contactId);
         }
     }
 }
