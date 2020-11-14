@@ -25,5 +25,11 @@ namespace FriendsAndMore.API.Controllers
         {
             return await _contactRepository.GetContacts();
         }
+        
+        [HttpGet("{id}")]
+        public async Task<Contact> Get(int id)
+        {
+            return await _contactRepository.GetContactById(id);
+        }
     }
 }
