@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using FriendsAndMore.UI.Data;
 using FriendsAndMore.UI.Services;
 
 namespace FriendsAndMore.UI
@@ -32,9 +31,6 @@ namespace FriendsAndMore.UI
             });
 
             services.AddScoped<IContactService, ContactService>();
-            
-            // TODO remove this sample stuff
-            services.AddSingleton<WeatherForecastService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
