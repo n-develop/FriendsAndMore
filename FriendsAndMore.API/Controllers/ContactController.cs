@@ -8,7 +8,7 @@ using Microsoft.Extensions.Logging;
 namespace FriendsAndMore.API.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class ContactController : Controller
     {
         private readonly ILogger<ContactController> _logger;
