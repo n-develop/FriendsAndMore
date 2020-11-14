@@ -1,13 +1,14 @@
 ﻿@page "/fetchdata"
 
-@using FriendsAndMore.UI.Data
-@inject WeatherForecastService ForecastService
+@using FriendsAndMore.UI.Models
+@using FriendsAndMore.UI.Services
+@inject IContactService ContactService
 
-<h1>Weather forecast</h1>
+<h1>My Contacts</h1>
 
 <p>This component demonstrates fetching data from a service.</p>
 
-@if (forecasts == null)
+@if (contacts == null)
 {
     <p>
         <em>Loading...</em>
@@ -18,20 +19,18 @@ else
     <table class="table">
         <thead>
         <tr>
-            <th>Date</th>
-            <th>Temp. (C)</th>
-            <th>Temp. (F)</th>
-            <th>Summary</th>
+            <th>Id</th>
+            <th>Firstname</th>
+            <th>Lastname</th>
         </tr>
         </thead>
         <tbody>
-        @foreach (var forecast in forecasts)
+        @foreach (var contact in contacts)
         {
             <tr>
-                <td>@forecast.Date.ToShortDateString()</td>
-                <td>@forecast.TemperatureC</td>
-                <td>@forecast.TemperatureF</td>
-                <td>@forecast.Summary</td>
+                <td>@contact.ContactId</td>
+                <td>@contact.Firstname</td>
+                <td>@contact.Lastname</td>
             </tr>
         }
         </tbody>
@@ -39,11 +38,11 @@ else
 }
 
 @code {
-    private WeatherForecast[] forecasts;
+    private IEnumerable<Contact> contacts;
 
     protected override async Task OnInitializedAsync()
     {
-        forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
+        contacts = await ContactService.GetAllContacts();
     }
 
 }
