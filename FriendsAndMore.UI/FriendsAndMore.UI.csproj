@@ -4,4 +4,10 @@
         <TargetFramework>net5.0</TargetFramework>
     </PropertyGroup>
 
+    <ItemGroup>
+      <Compile Update="Pages\ContactEditBase.cs">
+        <DependentUpon>ContactEdit.razor</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
 </Project>
