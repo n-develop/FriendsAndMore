@@ -31,5 +31,29 @@ namespace FriendsAndMore.API.Controllers
         {
             return await _contactRepository.GetContactById(id);
         }
+        
+        [HttpPut]
+        public IActionResult Update([FromBody] Contact contact)
+        {
+            if (contact == null)
+                return BadRequest();
+
+            if (contact.FirstName == string.Empty || contact.LastName == string.Empty)
+            {
+                ModelState.AddModelError("Name/FirstName", "The name or first name shouldn't be empty");
+            }
+
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var contactToUpdate = _contactRepository.GetContactById(contact.ContactId);
+
+            if (contactToUpdate == null)
+                return NotFound();
+
+            _contactRepository.UpdateContact(contact);
+
+            return NoContent(); //success
+        }
     }
 }
