@@ -15,9 +15,9 @@ namespace FriendsAndMore.DataAccess
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Contact>().HasData(new Contact {ContactId = 1, Firstname = "Max", Lastname = "Mustermann"});
-            modelBuilder.Entity<Contact>().HasData(new Contact {ContactId = 2, Firstname = "Manuela", Lastname = "Mustermann"});
-            modelBuilder.Entity<Contact>().HasData(new Contact {ContactId = 3, Firstname = "John", Lastname = "Smith"});
+            modelBuilder.Entity<Contact>().HasData(new Contact {ContactId = 1, FirstName = "Max", LastName = "Mustermann"});
+            modelBuilder.Entity<Contact>().HasData(new Contact {ContactId = 2, FirstName = "Manuela", LastName = "Mustermann"});
+            modelBuilder.Entity<Contact>().HasData(new Contact {ContactId = 3, FirstName = "John", LastName = "Smith"});
         }
     }
 }

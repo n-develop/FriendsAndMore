@@ -5,7 +5,7 @@
 <section class="contact-edit">
     @if (!Saved)
     {
-        <h1 class="page-title">Details for @Contact.Firstname @Contact.Lastname</h1>
+        <h1 class="page-title">Details for @Contact.FirstName @Contact.LastName</h1>
 
         <EditForm Model="@Contact" OnValidSubmit="@HandleValidSubmit" OnInvalidSubmit="@HandleInvalidSubmit">
 
@@ -14,13 +14,13 @@
 
             <div class="form-group row">
                 <label for="lastName" class="col-sm-3">Last name: </label>
-                <InputText id="lastName" class="form-control col-sm-8" @bind-Value="@Contact.Lastname" placeholder="Enter last name"></InputText>
-                <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Contact.Lastname)"/>
+                <InputText id="lastName" class="form-control col-sm-8" @bind-Value="@Contact.LastName" placeholder="Enter last name"></InputText>
+                <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Contact.LastName)"/>
             </div>
             <div class="form-group row">
                 <label for="firstName" class="col-sm-3">First name: </label>
-                <InputText id="firstName" class="form-control col-sm-8" @bind-Value="@Contact.Firstname" placeholder="Enter first name"></InputText>
-                <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Contact.Firstname)"/>
+                <InputText id="firstName" class="form-control col-sm-8" @bind-Value="@Contact.FirstName" placeholder="Enter first name"></InputText>
+                <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Contact.FirstName)"/>
             </div>
         </EditForm>
     }

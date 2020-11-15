@@ -24,5 +24,22 @@ namespace FriendsAndMore.DataAccess.Repositories
         {
             return await _dbContext.Contacts.Take(20).ToListAsync();
         }
+
+        public async Task<Contact> UpdateContact(Contact contact)
+        {
+            var foundContact = await _dbContext.Contacts.FirstOrDefaultAsync(e => e.ContactId == contact.ContactId);
+
+            if (foundContact != null)
+            {
+                foundContact.FirstName = contact.FirstName;
+                foundContact.LastName = contact.LastName;
+
+                await _dbContext.SaveChangesAsync();
+
+                return foundContact;
+            }
+
+            return null;
+        }
     }
 }

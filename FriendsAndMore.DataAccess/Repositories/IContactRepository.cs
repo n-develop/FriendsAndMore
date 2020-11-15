@@ -8,5 +8,6 @@ namespace FriendsAndMore.DataAccess.Repositories
     {
         Task<Contact> GetContactById(int contactId);
         Task<IEnumerable<Contact>> GetContacts();
+        Task<Contact> UpdateContact(Contact contact);
     }
 }
