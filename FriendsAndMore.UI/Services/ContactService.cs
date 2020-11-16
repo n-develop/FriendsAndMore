@@ -45,5 +45,10 @@ namespace FriendsAndMore.UI.Services
             
             await _httpClient.PutAsync("api/contact", content);
         }
+        
+        public async Task DeleteContact(int contactId)
+        {
+            await _httpClient.DeleteAsync("api/contact/" + contactId);
+        }
     }
 }

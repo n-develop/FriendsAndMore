@@ -10,5 +10,6 @@ namespace FriendsAndMore.UI.Services
         Task<Contact> GetContactById(int countryId);
         Task<Contact> AddContact(Contact contact);
         Task UpdateContact(Contact contact);
+        Task DeleteContact(int contactId);
     }
 }

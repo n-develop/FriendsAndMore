@@ -80,5 +80,23 @@ namespace FriendsAndMore.UI.Pages
         {
             NavigationManager.NavigateTo("/");
         }
+
+        protected void DeleteContact()
+        {
+            if (Contact.ContactId == 0)
+            {
+                StatusClass = "is-danger";
+                MessageTitle = "Oops!";
+                Message = "Something went wrong adding the new contact. Please try again.";
+                Saved = false;
+            }
+
+            ContactService.DeleteContact(Contact.ContactId);
+
+            StatusClass = "is-success";
+            MessageTitle = "Deleted";
+            Message = "The contact is deleted successfully.";
+            Saved = true;
+        }
     }
 }
