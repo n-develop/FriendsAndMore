@@ -2,50 +2,53 @@
 @page "/ContactEdit/{ContactId}"
 @inherits ContactEditBase
 
-<section class="box contact-edit">
-    @if (!Saved)
-    {
-        <h1 class="page-title">Details for @Contact.FirstName @Contact.LastName</h1>
+<section class="column">
+    <div class="box contact-edit">
 
-        <EditForm Model="@Contact" OnValidSubmit="@HandleValidSubmit" OnInvalidSubmit="@HandleInvalidSubmit">
+        @if (!Saved)
+        {
+            <h1 class="title">Details for @Contact.FirstName @Contact.LastName</h1>
 
-            <DataAnnotationsValidator/>
-            <ValidationSummary/>
+            <EditForm Model="@Contact" OnValidSubmit="@HandleValidSubmit" OnInvalidSubmit="@HandleInvalidSubmit">
 
-            <div class="field">
-                <label for="lastName" class="field">Last name:</label>
-                <div class="control">
-                    <InputText id="lastName" class="input" @bind-Value="@Contact.LastName" placeholder="Enter last name"></InputText>
-                    <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Contact.LastName)"/>
+                <DataAnnotationsValidator/>
+                <ValidationSummary/>
+
+                <div class="field">
+                    <label for="lastName" class="field">Last name:</label>
+                    <div class="control">
+                        <InputText id="lastName" class="input" @bind-Value="@Contact.LastName" placeholder="Enter last name"></InputText>
+                        <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Contact.LastName)"/>
+                    </div>
                 </div>
-            </div>
-            <div class="field">
-                <label for="firstName" class="field">First name: </label>
-                <div class="control">
-                    <InputText id="firstName" class="input" @bind-Value="@Contact.FirstName" placeholder="Enter first name"></InputText>
-                    <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Contact.FirstName)"/>
+                <div class="field">
+                    <label for="firstName" class="field">First name: </label>
+                    <div class="control">
+                        <InputText id="firstName" class="input" @bind-Value="@Contact.FirstName" placeholder="Enter first name"></InputText>
+                        <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Contact.FirstName)"/>
+                    </div>
                 </div>
-            </div>
-            <button type="submit" class="button is-info is-medium">Save</button>
-            <a class="button is-outlined is-info is-medium" @onclick="@NavigateToOverview">Cancel</a>
-            @if (Contact.ContactId > 0)
-            {
-                <a class="button is-danger is-medium">
-                    Delete
-                </a>
-            }
-        </EditForm>
-    }
-    else
-    {
-        <article class="message @StatusClass">
-            <div class="message-header">
-                <p>@MessageTitle</p>
-            </div>
-            <div class="message-body">
-                @Message
-            </div>
-        </article>
-        <a class="button is-info is-outlined" @onclick="@NavigateToOverview">Back to overview</a>
-    }
+                <button type="submit" class="button is-info is-medium">Save</button>
+                <a class="button is-outlined is-info is-medium" @onclick="@NavigateToOverview">Cancel</a>
+                @if (Contact.ContactId > 0)
+                {
+                    <a class="button is-danger is-medium">
+                        Delete
+                    </a>
+                }
+            </EditForm>
+        }
+        else
+        {
+            <article class="message @StatusClass">
+                <div class="message-header">
+                    <p>@MessageTitle</p>
+                </div>
+                <div class="message-body">
+                    @Message
+                </div>
+            </article>
+            <a class="button is-info is-outlined" @onclick="@NavigateToOverview">Back to overview</a>
+        }
+    </div>
 </section>
