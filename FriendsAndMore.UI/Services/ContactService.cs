@@ -28,9 +28,14 @@ namespace FriendsAndMore.UI.Services
             return JsonSerializer.Deserialize<Contact>(result, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
         }
 
-        public Task<Contact> AddContact(Contact contact)
+        public async Task<Contact> AddContact(Contact contact)
         {
-            throw new System.NotImplementedException();
+            var serializedContact = JsonSerializer.Serialize(contact, new JsonSerializerOptions{ PropertyNameCaseInsensitive = true});
+            var content = new StringContent(serializedContact, Encoding.UTF8, "application/json");
+            
+            var addedResult = await _httpClient.PostAsync("api/contact", content);
+            var response = await addedResult.Content.ReadAsStringAsync();
+            return JsonSerializer.Deserialize<Contact>(response, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
         }
 
         public async Task UpdateContact(Contact contact)

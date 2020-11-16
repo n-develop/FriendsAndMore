@@ -58,7 +58,7 @@ namespace FriendsAndMore.API.Controllers
         }
         
         [HttpPost]
-        public IActionResult Create([FromBody] Contact contact)
+        public async Task<IActionResult> Create([FromBody] Contact contact)
         {
             if (contact == null)
                 return BadRequest();
@@ -71,14 +71,14 @@ namespace FriendsAndMore.API.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var knownContact = _contactRepository.GetContactById(contact.ContactId);
+            var knownContact = await _contactRepository.GetContactById(contact.ContactId);
 
             if (knownContact != null)
                 return new StatusCodeResult((int)HttpStatusCode.Conflict);
 
-            _contactRepository.AddContact(contact);
+            var addedContact = await _contactRepository.AddContact(contact);
 
-            return NoContent(); //success
+            return Ok(addedContact);
         }
     }
 }
