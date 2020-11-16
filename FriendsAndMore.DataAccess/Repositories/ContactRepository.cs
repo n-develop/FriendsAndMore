@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -40,6 +41,19 @@ namespace FriendsAndMore.DataAccess.Repositories
             }
 
             return null;
+        }
+
+        public async Task<Contact> AddContact(Contact contact)
+        {
+            if (contact.ContactId != 0)
+            {
+                throw new Exception("New contacts must not have a ContactId");
+            }
+
+            var added = await _dbContext.Contacts.AddAsync(contact);
+            await _dbContext.SaveChangesAsync();
+
+            return added.Entity;
         }
     }
 }

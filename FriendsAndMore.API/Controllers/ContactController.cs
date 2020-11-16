@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Net;
 using System.Threading.Tasks;
 using FriendsAndMore.DataAccess.Entities;
 using FriendsAndMore.DataAccess.Repositories;
@@ -52,6 +53,30 @@ namespace FriendsAndMore.API.Controllers
                 return NotFound();
 
             _contactRepository.UpdateContact(contact);
+
+            return NoContent(); //success
+        }
+        
+        [HttpPost]
+        public IActionResult Create([FromBody] Contact contact)
+        {
+            if (contact == null)
+                return BadRequest();
+
+            if (contact.FirstName == string.Empty || contact.LastName == string.Empty)
+            {
+                ModelState.AddModelError("Name/FirstName", "The name or first name shouldn't be empty");
+            }
+
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var knownContact = _contactRepository.GetContactById(contact.ContactId);
+
+            if (knownContact != null)
+                return new StatusCodeResult((int)HttpStatusCode.Conflict);
+
+            _contactRepository.AddContact(contact);
 
             return NoContent(); //success
         }
