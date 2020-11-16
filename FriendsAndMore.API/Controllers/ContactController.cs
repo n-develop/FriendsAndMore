@@ -54,7 +54,7 @@ namespace FriendsAndMore.API.Controllers
 
             _contactRepository.UpdateContact(contact);
 
-            return NoContent(); //success
+            return NoContent();
         }
         
         [HttpPost]
