@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using FriendsAndMore.UI.Models;
@@ -32,9 +33,12 @@ namespace FriendsAndMore.UI.Services
             throw new System.NotImplementedException();
         }
 
-        public Task UpdateContact(Contact contact)
+        public async Task UpdateContact(Contact contact)
         {
-            throw new System.NotImplementedException();
+            var serializedContact = JsonSerializer.Serialize(contact, new JsonSerializerOptions{ PropertyNameCaseInsensitive = true});
+            var content = new StringContent(serializedContact, Encoding.UTF8, "application/json");
+            
+            await _httpClient.PutAsync("api/contact", content);
         }
     }
 }

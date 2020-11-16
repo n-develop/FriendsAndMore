@@ -74,7 +74,7 @@ namespace FriendsAndMore.UI.Pages
         
         protected void NavigateToOverview()
         {
-            NavigationManager.NavigateTo("/ContactOverview");
+            NavigationManager.NavigateTo("/");
         }
     }
 }
