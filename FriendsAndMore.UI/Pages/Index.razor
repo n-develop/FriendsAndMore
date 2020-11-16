@@ -2,6 +2,7 @@
 
 @using FriendsAndMore.UI.Models
 @using FriendsAndMore.UI.Services
+@using System.Threading
 @inject IContactService ContactService
 
 @if (contacts == null)
@@ -9,6 +10,7 @@
     <p>
         <em>Loading contacts...</em>
     </p>
+    <div class="spinner" />
 }
 else
 {
