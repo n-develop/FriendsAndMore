@@ -55,5 +55,23 @@ namespace FriendsAndMore.DataAccess.Repositories
 
             return added.Entity;
         }
+
+        public async Task DeleteContact(int contactId)
+        {
+            if (contactId <= 0)
+            {
+                throw new ArgumentException("ContactId must be given", nameof(contactId));
+            }
+
+            var contact = await _dbContext.Contacts.FindAsync(contactId);
+
+            if (contact == null)
+            {
+                return;
+            }
+
+            _dbContext.Contacts.Remove(contact);
+            await _dbContext.SaveChangesAsync();
+        }
     }
 }

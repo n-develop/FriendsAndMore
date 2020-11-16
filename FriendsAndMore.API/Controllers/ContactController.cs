@@ -80,5 +80,18 @@ namespace FriendsAndMore.API.Controllers
 
             return Ok(addedContact);
         }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> Delete(int contactId)
+        {
+            if (contactId <= 0)
+            {
+                return BadRequest();
+            }
+
+            await _contactRepository.DeleteContact(contactId);
+
+            return NoContent();
+        }
     }
 }
