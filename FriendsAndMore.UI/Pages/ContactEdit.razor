@@ -38,7 +38,14 @@
     }
     else
     {
-        <div class="alert @StatusClass">@Message</div>
-        <a class="btn btn-outline-primary" @onclick="@NavigateToOverview">Back to overview</a>
+        <article class="message @StatusClass">
+            <div class="message-header">
+                <p>@MessageTitle</p>
+            </div>
+            <div class="message-body">
+                @Message
+            </div>
+        </article>
+        <a class="button is-info is-outlined" @onclick="@NavigateToOverview">Back to overview</a>
     }
 </section>

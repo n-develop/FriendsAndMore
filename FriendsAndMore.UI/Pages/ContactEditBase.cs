@@ -21,6 +21,7 @@ namespace FriendsAndMore.UI.Pages
         //used to store state of screen
         protected bool Saved;
         protected string Message = string.Empty;
+        protected string MessageTitle = string.Empty;
         protected string StatusClass = string.Empty;
 
         protected override async Task OnInitializedAsync()
@@ -46,13 +47,15 @@ namespace FriendsAndMore.UI.Pages
                 var addedContact = await ContactService.AddContact(Contact);
                 if (addedContact != null)
                 {
-                    StatusClass = "alert-success";
+                    StatusClass = "is-success";
+                    MessageTitle = "Contact added";
                     Message = "New contact added successfully.";
                     Saved = true;
                 }
                 else
                 {
-                    StatusClass = "alert-danger";
+                    StatusClass = "is-danger";
+                    MessageTitle = "Oops!";
                     Message = "Something went wrong adding the new contact. Please try again.";
                     Saved = false;
                 }
@@ -60,15 +63,16 @@ namespace FriendsAndMore.UI.Pages
             else
             {
                 await ContactService.UpdateContact(Contact);
-                StatusClass = "alert-success";
-                Message = "Contact updated successfully.";
+                StatusClass = "is-success";
+                MessageTitle = "Contact updated";
+                Message = "The contact was updated successfully.";
                 Saved = true;
             }
         }
 
         protected void HandleInvalidSubmit()
         {
-            StatusClass = "alert-danger";
+            StatusClass = "is-danger";
             Message = "There are some validation errors. Please try again.";
         }
         
