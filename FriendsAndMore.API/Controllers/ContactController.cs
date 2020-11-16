@@ -82,14 +82,14 @@ namespace FriendsAndMore.API.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult> Delete(int contactId)
+        public async Task<ActionResult> Delete(int id)
         {
-            if (contactId <= 0)
+            if (id <= 0)
             {
                 return BadRequest();
             }
 
-            await _contactRepository.DeleteContact(contactId);
+            await _contactRepository.DeleteContact(id);
 
             return NoContent();
         }
