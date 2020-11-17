@@ -8,6 +8,9 @@
       <Compile Update="Pages\ContactEditBase.cs">
         <DependentUpon>ContactEdit.razor</DependentUpon>
       </Compile>
+      <Compile Update="Pages\IndexBase.cs">
+        <DependentUpon>Index.razor</DependentUpon>
+      </Compile>
     </ItemGroup>
 
     <ItemGroup>
