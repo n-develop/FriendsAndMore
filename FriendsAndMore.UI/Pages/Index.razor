@@ -35,22 +35,22 @@ else
                         </div>
 
                         <div class="content">
-                            @if (!string.IsNullOrWhiteSpace("Model.Address"))
+                            @if (!string.IsNullOrWhiteSpace(contact.Address))
                             {
                                 <i class="fa fa-map-marked-alt"></i>
-                                <span>Musterweg 32, 34142 Rostock</span>
+                                <span>@contact.Address</span>
                                 <br/>
                             }
-                            @if (!string.IsNullOrWhiteSpace("Model.Employer"))
+                            @if (!string.IsNullOrWhiteSpace(contact.Employer))
                             {
                                 <i class="fa fa-building"></i>
-                                <span>Enterprise Stuff AG</span>
+                                <span>@contact.Employer</span>
                                 <br/>
                             }
-                            @if (!string.IsNullOrWhiteSpace("Model.BusinessTitle"))
+                            @if (!string.IsNullOrWhiteSpace(contact.BusinessTitle))
                             {
                                 <i class="fa fa-briefcase"></i>
-                                <span>Lumpa Lumpa</span>
+                                <span>@contact.BusinessTitle</span>
                                 <br/>
                             }
                         </div>

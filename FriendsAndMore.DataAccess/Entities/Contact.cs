@@ -14,5 +14,15 @@ namespace FriendsAndMore.DataAccess.Entities
         [Required]
         [StringLength(100, ErrorMessage = "Last name is too long.")]
         public string LastName { get; set; }
+        
+        public string MiddleName { get; set; }
+        
+        public string Address { get; set; }
+        
+        public string Employer { get; set; }
+
+        public string BusinessTitle { get; set; }
+        
+        public string Tags { get; set; }
     }
 }

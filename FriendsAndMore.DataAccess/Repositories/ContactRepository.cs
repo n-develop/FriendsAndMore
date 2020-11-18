@@ -34,6 +34,11 @@ namespace FriendsAndMore.DataAccess.Repositories
             {
                 foundContact.FirstName = contact.FirstName;
                 foundContact.LastName = contact.LastName;
+                foundContact.MiddleName = contact.MiddleName;
+                foundContact.Address = contact.Address;
+                foundContact.Employer = contact.Employer;
+                foundContact.BusinessTitle = contact.BusinessTitle;
+                foundContact.Tags = contact.Tags;
 
                 await _dbContext.SaveChangesAsync();
 
