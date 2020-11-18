@@ -13,7 +13,7 @@ namespace FriendsAndMore.UI.Pages
         protected IEnumerable<Contact> Contacts;
 
         [Inject]
-        public IContactService ContactService { get; set; }
+        private IContactService ContactService { get; set; }
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
