@@ -32,7 +32,7 @@ namespace FriendsAndMore.UI.Pages
 
             if (contactId == 0)
             {
-                Contact = new Contact { FirstName = "Firstname", LastName = "Lastname" };
+                Contact = new Contact();
             }
             else
             {
