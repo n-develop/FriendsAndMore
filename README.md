@@ -55,9 +55,9 @@ Just like in your Google contacts, you can store relationships on all of your co
 It's just a simple list of "Relationship-Name pairs", like "Wife - Jane Smith".
 
 ### Status Updates / Timeline
-"People I Know" makes it easy for you, to keep track of recent things in the life of your friends/contacts.
+"Friends & More" makes it easy for you, to keep track of recent things in the life of your friends/contacts.
 Just add updates to the "timeline" of your contacts. Before you meet your friends again, just check their
-contact in "People I Know" and you can ask about the exam they had a week ago or about the broken leg of their brother.
+contact in "Friends & More" and you can ask about the exam they had a week ago or about the broken leg of their brother.
 
 ## Something is missing?
 Are you missing some kind of feature? You are welcome to create an issue here in the GitHub repo. Let's discuss it and see if it would benefit other people as well.
