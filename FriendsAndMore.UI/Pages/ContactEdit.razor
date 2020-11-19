@@ -96,21 +96,23 @@
                 </div>
 
                 <div class="field">
-                    <label for="tags" class="field">Tags: </label>
+                    <label for="tags" class="label">Tags: </label>
                     <div class="control">
                         <InputText id="tags" class="input" @bind-Value="@Contact.Tags" placeholder="football, family"></InputText>
                         <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Contact.Tags)"/>
                     </div>
                 </div>
-
-                <button type="submit" class="button is-info is-medium">Save</button>
-                <a class="button is-outlined is-info is-medium" @onclick="@NavigateToOverview">Cancel</a>
-                @if (Contact.ContactId > 0)
-                {
-                    <a class="button is-danger is-medium" @onclick="@DeleteContact">
-                        Delete
-                    </a>
-                }
+                
+                <div class="buttons">
+                    <button type="submit" class="button is-info is-medium">Save</button>
+                    <button class="button is-outlined is-info is-medium" @onclick="@NavigateToOverview">Cancel</button>
+                    @if (Contact.ContactId > 0)
+                    {
+                        <button class="button is-danger is-medium" @onclick="@DeleteContact">
+                            Delete
+                        </button>
+                    }
+                </div>
             </EditForm>
         }
         else
