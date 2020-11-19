@@ -7,13 +7,12 @@
 
         @if (!Saved)
         {
-            <h1 class="title">Details for @Contact.FirstName @Contact.LastName</h1>
+            <h1 class="title">Details for @Contact.FullName</h1>
 
             <EditForm Model="@Contact" OnValidSubmit="@HandleValidSubmit" OnInvalidSubmit="@HandleInvalidSubmit">
 
                 <DataAnnotationsValidator/>
                 <ValidationSummary/>
-
 
                 <div class="field">
                     <label for="firstName" class="field">First name: </label>
@@ -36,7 +35,7 @@
                         <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Contact.LastName)"/>
                     </div>
                 </div>
-                
+
                 <div class="field">
                     <label for="address" class="field">Address: </label>
                     <div class="control">
@@ -59,7 +58,7 @@
                         <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Contact.BusinessTitle)"/>
                     </div>
                 </div>
-                
+
                 <div class="field">
                     <label for="tags" class="field">Tags: </label>
                     <div class="control">
@@ -67,7 +66,7 @@
                         <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Contact.Tags)"/>
                     </div>
                 </div>
-                
+
                 <button type="submit" class="button is-info is-medium">Save</button>
                 <a class="button is-outlined is-info is-medium" @onclick="@NavigateToOverview">Cancel</a>
                 @if (Contact.ContactId > 0)

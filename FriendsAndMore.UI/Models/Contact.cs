@@ -17,5 +17,29 @@ namespace FriendsAndMore.UI.Models
         public string BusinessTitle { get; set; }
         
         public string Tags { get; set; }
+        
+        public string FullName
+        {
+            get
+            {
+                var fullname = string.Empty;
+                if (!string.IsNullOrWhiteSpace(FirstName))
+                {
+                    fullname = FirstName;
+                }
+
+                if (!string.IsNullOrWhiteSpace(MiddleName))
+                {
+                    fullname = string.Join(" ", fullname, MiddleName);
+                }
+
+                if (!string.IsNullOrWhiteSpace(LastName))
+                {
+                    fullname = string.Join(" ", fullname, LastName);
+                }
+
+                return fullname.Trim();
+            }
+        }
     }
 }
