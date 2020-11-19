@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace FriendsAndMore.DataAccess.Entities
@@ -24,5 +25,7 @@ namespace FriendsAndMore.DataAccess.Entities
         public string BusinessTitle { get; set; }
         
         public string Tags { get; set; }
+        
+        public virtual List<EmailAddress> EmailAddresses { get; set; }
     }
 }

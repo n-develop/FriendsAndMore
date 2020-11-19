@@ -18,12 +18,19 @@ namespace FriendsAndMore.DataAccess.Repositories
         
         public async Task<Contact> GetContactById(int contactId)
         {
-            return await _dbContext.Contacts.FindAsync(contactId);
+            return await _dbContext.Contacts
+                .Include(c => c.EmailAddresses)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(c => c.ContactId == contactId);
         }
 
         public async Task<IEnumerable<Contact>> GetContacts()
         {
-            return await _dbContext.Contacts.Take(20).ToListAsync();
+            return await _dbContext.Contacts
+                .Include(c => c.EmailAddresses)
+                .AsNoTracking()
+                .Take(20)
+                .ToListAsync();
         }
 
         public async Task<Contact> UpdateContact(Contact contact)
