@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace FriendsAndMore.UI.Models
 {
     public class Contact
@@ -17,6 +19,8 @@ namespace FriendsAndMore.UI.Models
         public string BusinessTitle { get; set; }
         
         public string Tags { get; set; }
+
+        public List<EmailAddress> EmailAddresses { get; set; }
         
         public string FullName
         {

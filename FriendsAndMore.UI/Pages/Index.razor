@@ -31,6 +31,10 @@ else
                                     <i class="fas fa-heart"></i>
                                 </span>
                                 <p class="title is-4">@contact.FullName</p>
+                                @if (contact.EmailAddresses != null && contact.EmailAddresses.Any())
+                                {
+                                    <p class="subtitle is-6">@contact.EmailAddresses.First().Email</p>
+                                }
                             </div>
                         </div>
 
