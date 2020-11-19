@@ -31,7 +31,7 @@ html, body {
     color: #0139D3;
 }
 
-.contact-preview > form > .panel > .panel-block {
+.contact-edit > form > .panel > .panel-block {
     display: block !important;
 }
 

@@ -4,6 +4,11 @@ namespace FriendsAndMore.UI.Models
 {
     public class Contact
     {
+        public Contact()
+        {
+            EmailAddresses = new List<EmailAddress>();
+        }
+        
         public int ContactId { get; set; }
 
         public string FirstName { get; set; }

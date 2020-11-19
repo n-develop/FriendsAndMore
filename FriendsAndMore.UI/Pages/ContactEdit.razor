@@ -15,21 +15,21 @@
                 <ValidationSummary/>
 
                 <div class="field">
-                    <label for="firstName" class="field">First name: </label>
+                    <label for="firstName" class="label">First name: </label>
                     <div class="control">
                         <InputText id="firstName" class="input" @bind-Value="@Contact.FirstName" placeholder="Enter first name"></InputText>
                         <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Contact.FirstName)"/>
                     </div>
                 </div>
                 <div class="field">
-                    <label for="middleName" class="field">Middle name: </label>
+                    <label for="middleName" class="label">Middle name: </label>
                     <div class="control">
                         <InputText id="middleName" class="input" @bind-Value="@Contact.MiddleName" placeholder="Enter middle name"></InputText>
                         <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Contact.MiddleName)"/>
                     </div>
                 </div>
                 <div class="field">
-                    <label for="lastName" class="field">Last name:</label>
+                    <label for="lastName" class="label">Last name:</label>
                     <div class="control">
                         <InputText id="lastName" class="input" @bind-Value="@Contact.LastName" placeholder="Enter last name"></InputText>
                         <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Contact.LastName)"/>
@@ -37,7 +37,7 @@
                 </div>
 
                 <div class="field">
-                    <label for="address" class="field">Address: </label>
+                    <label for="address" class="label">Address: </label>
                     <div class="control">
                         <InputText id="address" class="input" @bind-Value="@Contact.Address" placeholder="Address"></InputText>
                         <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Contact.Address)"/>
@@ -45,18 +45,54 @@
                 </div>
 
                 <div class="field">
-                    <label for="employer" class="field">Employer: </label>
+                    <label for="employer" class="label">Employer: </label>
                     <div class="control">
                         <InputText id="employer" class="input" @bind-Value="@Contact.Employer" placeholder="Employer"></InputText>
                         <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Contact.Employer)"/>
                     </div>
                 </div>
                 <div class="field">
-                    <label for="businessTitle" class="field">BusinessTitle: </label>
+                    <label for="businessTitle" class="label">BusinessTitle: </label>
                     <div class="control">
                         <InputText id="businessTitle" class="input" @bind-Value="@Contact.BusinessTitle" placeholder="Business Title"></InputText>
                         <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Contact.BusinessTitle)"/>
                     </div>
+                </div>
+                
+                <div class="panel">
+                    <p class="panel-heading">
+                        Emails
+                        <a class="button is-pulled-right is-small is-success"> @* add onclick handler *@
+                            <i class="fa fa-plus-circle"></i>
+                        </a>
+                    </p>
+                
+                    @foreach (var email in Contact.EmailAddresses)
+                    {
+                        <div class="panel-block">
+                            <label class="label">@email.Type</label>
+                            <div class="field has-addons">
+                                <p class="control">
+                                    <a class="button is-info" href="mailto:@email.Email">
+                                        <i class="fa fa-envelope"></i>
+                                    </a>
+                                </p>
+                                <div class="control is-expanded">
+                                    <input class="input" value="@email.Email" type="email" placeholder="email@@domoain.com" disabled="disabled">
+                                </div>
+                                <p class="control">
+                                    <a class="button is-warning"> @* add onclick handler *@
+                                        <i class="fa fa-pencil-alt"></i>
+                                    </a>
+                                </p>
+                                <p class="control">
+                                    <a class="button is-danger"> @* add onclick handler *@
+                                        <i class="fa fa-minus-circle"></i>
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    }
                 </div>
 
                 <div class="field">
