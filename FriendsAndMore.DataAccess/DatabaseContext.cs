@@ -11,6 +11,7 @@ namespace FriendsAndMore.DataAccess
 
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<EmailAddress> EmailAddresses { get; set; }
+        public DbSet<Relationship> Relationships { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -19,6 +20,21 @@ namespace FriendsAndMore.DataAccess
             modelBuilder.Entity<Contact>().HasData(new Contact {ContactId = 1, FirstName = "Max", LastName = "Mustermann"});
             modelBuilder.Entity<Contact>().HasData(new Contact {ContactId = 2, FirstName = "Manuela", LastName = "Mustermann"});
             modelBuilder.Entity<Contact>().HasData(new Contact {ContactId = 3, FirstName = "John", LastName = "Smith"});
+
+            modelBuilder.Entity<Relationship>().HasData(new Relationship
+            {
+                RelationshipId = 1,
+                ContactId = 1,
+                Person = "Manuela Mustermann",
+                Type = "Wife"
+            });
+            modelBuilder.Entity<Relationship>().HasData(new Relationship
+            {
+                RelationshipId = 2,
+                ContactId = 2,
+                Person = "Max Mustermann",
+                Type = "Husband"
+            });
             
             modelBuilder.Entity<EmailAddress>().HasData(new EmailAddress
             {
