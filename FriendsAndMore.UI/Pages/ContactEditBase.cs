@@ -18,7 +18,6 @@ namespace FriendsAndMore.UI.Pages
         
         public Contact Contact { get; set; } = new Contact();
 
-        //used to store state of screen
         protected bool Saved;
         protected string Message = string.Empty;
         protected string MessageTitle = string.Empty;

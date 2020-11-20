@@ -18,21 +18,21 @@
                     <label for="firstName" class="label">First name: </label>
                     <div class="control">
                         <InputText id="firstName" class="input" @bind-Value="@Contact.FirstName" placeholder="Enter first name"></InputText>
-                        <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Contact.FirstName)"/>
+                        <ValidationMessage class="" For="@(() => Contact.FirstName)"/>
                     </div>
                 </div>
                 <div class="field">
                     <label for="middleName" class="label">Middle name: </label>
                     <div class="control">
                         <InputText id="middleName" class="input" @bind-Value="@Contact.MiddleName" placeholder="Enter middle name"></InputText>
-                        <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Contact.MiddleName)"/>
+                        <ValidationMessage class="" For="@(() => Contact.MiddleName)"/>
                     </div>
                 </div>
                 <div class="field">
                     <label for="lastName" class="label">Last name:</label>
                     <div class="control">
                         <InputText id="lastName" class="input" @bind-Value="@Contact.LastName" placeholder="Enter last name"></InputText>
-                        <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Contact.LastName)"/>
+                        <ValidationMessage class="" For="@(() => Contact.LastName)"/>
                     </div>
                 </div>
 
@@ -40,7 +40,7 @@
                     <label for="address" class="label">Address: </label>
                     <div class="control">
                         <InputText id="address" class="input" @bind-Value="@Contact.Address" placeholder="Address"></InputText>
-                        <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Contact.Address)"/>
+                        <ValidationMessage class="" For="@(() => Contact.Address)"/>
                     </div>
                 </div>
 
@@ -48,14 +48,14 @@
                     <label for="employer" class="label">Employer: </label>
                     <div class="control">
                         <InputText id="employer" class="input" @bind-Value="@Contact.Employer" placeholder="Employer"></InputText>
-                        <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Contact.Employer)"/>
+                        <ValidationMessage class="" For="@(() => Contact.Employer)"/>
                     </div>
                 </div>
                 <div class="field">
                     <label for="businessTitle" class="label">BusinessTitle: </label>
                     <div class="control">
                         <InputText id="businessTitle" class="input" @bind-Value="@Contact.BusinessTitle" placeholder="Business Title"></InputText>
-                        <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Contact.BusinessTitle)"/>
+                        <ValidationMessage class="" For="@(() => Contact.BusinessTitle)"/>
                     </div>
                 </div>
                 
@@ -99,7 +99,7 @@
                     <label for="tags" class="label">Tags: </label>
                     <div class="control">
                         <InputText id="tags" class="input" @bind-Value="@Contact.Tags" placeholder="football, family"></InputText>
-                        <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => Contact.Tags)"/>
+                        <ValidationMessage class="" For="@(() => Contact.Tags)"/>
                     </div>
                 </div>
                 
