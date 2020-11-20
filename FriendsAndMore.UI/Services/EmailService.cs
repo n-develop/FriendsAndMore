@@ -39,9 +39,9 @@ namespace FriendsAndMore.UI.Services
             await _httpClient.PutAsync("api/email", content);
         }
 
-        public Task DeleteEmailAddress(int emailAddressId)
+        public async Task DeleteEmailAddress(int emailAddressId)
         {
-            throw new System.NotImplementedException();
+            await _httpClient.DeleteAsync("api/email/" + emailAddressId);
         }
     }
 }

@@ -70,5 +70,18 @@ namespace FriendsAndMore.API.Controllers
 
             return Ok(addedEmailAddress);
         }
+        
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> Delete(int id)
+        {
+            if (id <= 0)
+            {
+                return BadRequest();
+            }
+
+            await _emailAddressRepository.DeleteEmailAddress(id);
+
+            return NoContent();
+        }
     }
 }

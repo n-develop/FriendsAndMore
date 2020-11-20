@@ -51,5 +51,23 @@ namespace FriendsAndMore.DataAccess.Repositories
 
             return added.Entity;
         }
+
+        public async Task DeleteEmailAddress(int id)
+        {
+            if (id <= 0)
+            {
+                throw new ArgumentException("EmailAddressId must be given", nameof(id));
+            }
+
+            var emailAddress = await _dbContext.EmailAddresses.FindAsync(id);
+
+            if (emailAddress == null)
+            {
+                return;
+            }
+
+            _dbContext.EmailAddresses.Remove(emailAddress);
+            await _dbContext.SaveChangesAsync();
+        }
     }
 }

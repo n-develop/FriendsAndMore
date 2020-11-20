@@ -12,6 +12,9 @@ namespace FriendsAndMore.UI.Pages
 
         [Inject]
         public IContactService ContactService { get; set; }
+    
+        [Inject]
+        public IEmailService EmailService { get; set; }
 
         [Parameter]
         public string ContactId { get; set; }
@@ -106,6 +109,24 @@ namespace FriendsAndMore.UI.Pages
         protected void UpdateEmailAddress(int emailId)
         {
             NavigationManager.NavigateTo("/EmailEdit/" + Contact.ContactId + "/" + emailId);
+        }
+        
+        protected void DeleteEmailAddress(int emailId)
+        {
+            if (emailId == 0)
+            {
+                StatusClass = "is-danger";
+                MessageTitle = "Oops!";
+                Message = "Something went wrong deleting an email address. Please try again.";
+                Saved = false;
+            }
+
+            EmailService.DeleteEmailAddress(emailId);
+
+            StatusClass = "is-success";
+            MessageTitle = "Deleted";
+            Message = "The email address is deleted successfully.";
+            Saved = true;
         }
     }
 }

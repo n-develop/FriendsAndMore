@@ -80,7 +80,8 @@ namespace FriendsAndMore.UI.Pages
 
         protected void HandleInvalidSubmit()
         {
-            throw new NotImplementedException();
+            StatusClass = "is-danger";
+            Message = "There are some validation errors. Please try again.";
         }
         
         protected void NavigateToContact()
