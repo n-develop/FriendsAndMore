@@ -33,6 +33,7 @@ namespace FriendsAndMore.UI
             services.AddScoped<IContactService, ContactService>();
             services.AddScoped<IEmailService, EmailService>();
             services.AddScoped<IRelationshipService, RelationshipService>();
+            services.AddScoped<IStatusUpdateService, StatusUpdateService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
