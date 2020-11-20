@@ -27,5 +27,7 @@ namespace FriendsAndMore.DataAccess.Entities
         public string Tags { get; set; }
         
         public virtual List<EmailAddress> EmailAddresses { get; set; }
+
+        public virtual List<Relationship> Relationships { get; set; }
     }
 }
