@@ -7,6 +7,7 @@ namespace FriendsAndMore.UI.Models
         public Contact()
         {
             EmailAddresses = new List<EmailAddress>();
+            Relationships = new List<Relationship>();
         }
         
         public int ContactId { get; set; }
@@ -26,6 +27,8 @@ namespace FriendsAndMore.UI.Models
         public string Tags { get; set; }
 
         public List<EmailAddress> EmailAddresses { get; set; }
+        
+        public List<Relationship> Relationships { get; set; }
         
         public string FullName
         {

@@ -5,78 +5,78 @@ using Microsoft.AspNetCore.Components;
 
 namespace FriendsAndMore.UI.Pages
 {
-    public class EmailEditBase : ComponentBase
+    public class RelationshipEditBase : ComponentBase
     {
         [Inject] 
         public NavigationManager NavigationManager { get; set; }
 
         [Inject]
-        public IEmailService EmailService { get; set; }
-
-        protected EmailAddress Email { get; set; } = new EmailAddress();
+        public IRelationshipService RelationshipService { get; set; }
+        
+        protected Relationship Relationship { get; set; } = new Relationship();
         
         [Parameter]
-        public string CId { get; set; }
+        public string ContactId { get; set; }
 
         [Parameter]
-        public string EmailAddressId { get; set; }
+        public string RelationshipId { get; set; }
         
         protected bool Saved;
         protected string Message = string.Empty;
         protected string MessageTitle = string.Empty;
         protected string StatusClass = string.Empty;
-
+        
         protected override async Task OnInitializedAsync()
         {
             Saved = false;
 
-            var contactId = int.Parse(CId);
+            var contactId = int.Parse(ContactId);
 
-            int.TryParse(EmailAddressId, out var emailId);
+            int.TryParse(RelationshipId, out var relationshipId);
 
-            if (emailId == 0)
+            if (relationshipId == 0)
             {
-                Email = new EmailAddress
+                Relationship = new Relationship
                 {
                     ContactId = contactId
                 };
             }
             else
             {
-                Email = await EmailService.GetEmailAddressById(emailId);
+                Relationship = await RelationshipService.GetRelationshipById(relationshipId);
             }
         }
-
+        
         protected async Task HandleValidSubmit()
         {
-            if (Email.EmailAddressId == 0)
+            if (Relationship.RelationshipId == 0)
             {
-                var addedEmailAddress = EmailService.AddEmailAddress(Email);
-                if (addedEmailAddress != null)
+                var addedRelationship = RelationshipService.AddRelationship(Relationship);
+                if (addedRelationship != null)
                 {
                     StatusClass = "is-success";
-                    MessageTitle = "Email address added";
-                    Message = "New email address added successfully.";
+                    MessageTitle = "Relationship added";
+                    Message = "New relationship added successfully.";
                     Saved = true;
                 }
                 else
                 {
                     StatusClass = "is-danger";
                     MessageTitle = "Oops!";
-                    Message = "Something went wrong adding the new email address. Please try again.";
+                    Message = "Something went wrong adding the new relationship. Please try again.";
                     Saved = false;
                 }
             }
             else
             {
-                await EmailService.UpdateEmailAddress(Email);
+                await RelationshipService.UpdateRelationship(Relationship);
                 StatusClass = "is-success";
-                MessageTitle = "Email address updated";
-                Message = "The email address was updated successfully.";
+                MessageTitle = "Relationship updated";
+                Message = "The relationship was updated successfully.";
                 Saved = true;
             }
         }
-
+        
         protected void HandleInvalidSubmit()
         {
             StatusClass = "is-danger";
@@ -85,7 +85,7 @@ namespace FriendsAndMore.UI.Pages
         
         protected void NavigateToContact()
         {
-            NavigationManager.NavigateTo("/ContactEdit/" + Email.ContactId);
+            NavigationManager.NavigateTo("/ContactEdit/" + Relationship.ContactId);
         }
     }
 }

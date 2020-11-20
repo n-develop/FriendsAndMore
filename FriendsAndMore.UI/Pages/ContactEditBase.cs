@@ -16,6 +16,9 @@ namespace FriendsAndMore.UI.Pages
         [Inject]
         public IEmailService EmailService { get; set; }
 
+        [Inject]
+        public IRelationshipService RelationshipService { get; set; }
+
         [Parameter]
         public string ContactId { get; set; }
         
@@ -126,6 +129,34 @@ namespace FriendsAndMore.UI.Pages
             StatusClass = "is-success";
             MessageTitle = "Deleted";
             Message = "The email address is deleted successfully.";
+            Saved = true;
+        }
+        
+        protected void CreateRelationship()
+        {
+            NavigationManager.NavigateTo("/RelationshipEdit/" + Contact.ContactId);
+        }
+        
+        protected void UpdateRelationship(int relationshipId)
+        {
+            NavigationManager.NavigateTo("/RelationshipEdit/" + Contact.ContactId + "/" + relationshipId);
+        }
+        
+        protected void DeleteRelationship(int relationshipId)
+        {
+            if (relationshipId == 0)
+            {
+                StatusClass = "is-danger";
+                MessageTitle = "Oops!";
+                Message = "Something went wrong deleting an relationship. Please try again.";
+                Saved = false;
+            }
+
+            RelationshipService.DeleteRelationship(relationshipId);
+
+            StatusClass = "is-success";
+            MessageTitle = "Deleted";
+            Message = "The relationship is deleted successfully.";
             Saved = true;
         }
     }

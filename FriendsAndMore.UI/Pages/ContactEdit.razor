@@ -62,7 +62,7 @@
                 <div class="panel">
                     <p class="panel-heading">
                         Emails
-                    <a class="button is-pulled-right is-small is-success" @onclick="@CreateEmailAddress"> @* add onclick handler *@
+                        <a class="button is-pulled-right is-small is-success" @onclick="@CreateEmailAddress">
                             <i class="fa fa-plus-circle"></i>
                         </a>
                     </p>
@@ -87,6 +87,42 @@
                                 </p>
                                 <p class="control">
                                     <a class="button is-danger" @onclick="() => { DeleteEmailAddress(email.EmailAddressId); }">
+                                        <i class="fa fa-minus-circle"></i>
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    }
+                </div>
+                
+                <div class="panel">
+                    <p class="panel-heading">
+                        Relationships
+                        <a class="button is-pulled-right is-small is-success" @onclick="@CreateRelationship"> @* add onclick handler *@
+                            <i class="fa fa-plus-circle"></i>
+                        </a>
+                    </p>
+                                
+                    @foreach (var relationship in Contact.Relationships)
+                    {
+                        <div class="panel-block">
+                            <label class="label">@relationship.Type</label>
+                            <div class="field has-addons">
+                                <p class="control">
+                                    <a class="button is-info"> @* a click here should execute a search for the name *@
+                                        <i class="fa fa-search"></i>
+                                    </a>
+                                </p>
+                                <div class="control is-expanded">
+                                    <input class="input" value="@relationship.Person" type="text" placeholder="e.g. Jamie Oliver" disabled="disabled">
+                                </div>
+                                <p class="control">
+                                    <a class="button is-warning" @onclick="() => { UpdateRelationship(relationship.RelationshipId); }">
+                                        <i class="fa fa-pencil-alt"></i>
+                                    </a>
+                                </p>
+                                <p class="control">
+                                    <a class="button is-danger" @onclick="() => { DeleteRelationship(relationship.RelationshipId); }">
                                         <i class="fa fa-minus-circle"></i>
                                     </a>
                                 </p>
