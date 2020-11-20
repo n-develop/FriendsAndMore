@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
 using FriendsAndMore.DataAccess.Entities;
 
 namespace FriendsAndMore.DataAccess
@@ -12,6 +13,7 @@ namespace FriendsAndMore.DataAccess
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<EmailAddress> EmailAddresses { get; set; }
         public DbSet<Relationship> Relationships { get; set; }
+        public DbSet<StatusUpdate> StatusUpdates { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -21,6 +23,14 @@ namespace FriendsAndMore.DataAccess
             modelBuilder.Entity<Contact>().HasData(new Contact {ContactId = 2, FirstName = "Manuela", LastName = "Mustermann"});
             modelBuilder.Entity<Contact>().HasData(new Contact {ContactId = 3, FirstName = "John", LastName = "Smith"});
 
+            modelBuilder.Entity<StatusUpdate>().HasData(new StatusUpdate
+            {
+                StatusUpdateId = 1,
+                ContactId = 3,
+                StatusText = "He quit his job.",
+                Created = new DateTime(2020, 3, 4)
+            });
+            
             modelBuilder.Entity<Relationship>().HasData(new Relationship
             {
                 RelationshipId = 1,

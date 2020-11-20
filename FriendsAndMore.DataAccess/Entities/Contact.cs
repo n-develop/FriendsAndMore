@@ -29,5 +29,7 @@ namespace FriendsAndMore.DataAccess.Entities
         public virtual List<EmailAddress> EmailAddresses { get; set; }
 
         public virtual List<Relationship> Relationships { get; set; }
+
+        public virtual List<StatusUpdate> StatusUpdates { get; set; }
     }
 }
