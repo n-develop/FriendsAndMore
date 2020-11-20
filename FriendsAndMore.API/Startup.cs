@@ -32,6 +32,7 @@ namespace FriendsAndMore.API
                 options.UseSqlite("Data Source=data.db"));
 
             services.AddTransient<IContactRepository, ContactRepository>();
+            services.AddTransient<IEmailAddressRepository, EmailAddressRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
