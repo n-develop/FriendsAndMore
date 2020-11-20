@@ -34,6 +34,7 @@ namespace FriendsAndMore.API
             services.AddTransient<IContactRepository, ContactRepository>();
             services.AddTransient<IEmailAddressRepository, EmailAddressRepository>();
             services.AddTransient<IRelationshipRepository, RelationshipRepository>();
+            services.AddTransient<IStatusUpdateRepository, StatusUpdateRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
