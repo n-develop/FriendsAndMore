@@ -6,6 +6,6 @@ namespace FriendsAndMore.DataAccess.Repositories
     public interface IEmailAddressRepository
     {
         Task<EmailAddress> GetEmailAddressById(int id);
-        Task<EmailAddress> UpdateEmailAddress(EmailAddress emailAddress)
+        Task<EmailAddress> UpdateEmailAddress(EmailAddress emailAddress);
     }
 }
