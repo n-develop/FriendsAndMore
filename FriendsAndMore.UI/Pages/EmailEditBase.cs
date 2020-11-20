@@ -13,8 +13,8 @@ namespace FriendsAndMore.UI.Pages
 
         [Inject]
         public IEmailService EmailService { get; set; }
-        
-        protected EmailAddress Email { get; set; }
+
+        protected EmailAddress Email { get; set; } = new EmailAddress();
         
         [Parameter]
         public string CId { get; set; }

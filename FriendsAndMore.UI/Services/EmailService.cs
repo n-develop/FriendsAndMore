@@ -1,3 +1,5 @@
+using System.Net.Http;
+using System.Text.Json;
 using System.Threading.Tasks;
 using FriendsAndMore.UI.Models;
 
@@ -5,9 +7,17 @@ namespace FriendsAndMore.UI.Services
 {
     class EmailService : IEmailService
     {
-        public Task<EmailAddress> GetEmailAddressById(int emailAddressId)
+        private readonly HttpClient _httpClient;
+
+        public EmailService(HttpClient httpClient)
         {
-            throw new System.NotImplementedException();
+            _httpClient = httpClient;
+        }
+        
+        public async Task<EmailAddress> GetEmailAddressById(int emailAddressId)
+        {
+            var result = await _httpClient.GetStringAsync("api/email/" + emailAddressId);
+            return JsonSerializer.Deserialize<EmailAddress>(result, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
         }
 
         public Task<EmailAddress> AddEmailAddress(EmailAddress emailAddress)
