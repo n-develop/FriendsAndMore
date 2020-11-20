@@ -97,5 +97,15 @@ namespace FriendsAndMore.UI.Pages
             Message = "The contact is deleted successfully.";
             Saved = true;
         }
+
+        protected void CreateEmailAddress()
+        {
+            NavigationManager.NavigateTo("/EmailEdit/" + Contact.ContactId);
+        }
+        
+        protected void UpdateEmailAddress(int emailId)
+        {
+            NavigationManager.NavigateTo("/EmailEdit/" + Contact.ContactId + "/" + emailId);
+        }
     }
 }

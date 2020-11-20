@@ -62,7 +62,7 @@
                 <div class="panel">
                     <p class="panel-heading">
                         Emails
-                        <a class="button is-pulled-right is-small is-success"> @* add onclick handler *@
+                    <a class="button is-pulled-right is-small is-success" @onclick="@CreateEmailAddress"> @* add onclick handler *@
                             <i class="fa fa-plus-circle"></i>
                         </a>
                     </p>
@@ -81,7 +81,7 @@
                                     <input class="input" value="@email.Email" type="email" placeholder="email@@domoain.com" disabled="disabled">
                                 </div>
                                 <p class="control">
-                                    <a class="button is-warning"> @* add onclick handler *@
+                                    <a class="button is-warning" @onclick="() => { UpdateEmailAddress(email.EmailAddressId); }">
                                         <i class="fa fa-pencil-alt"></i>
                                     </a>
                                 </p>

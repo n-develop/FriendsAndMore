@@ -1,41 +1,44 @@
-@page "/EmailEdit/{ContactId}"
-@page "/EmailEdit/{ContactId}/{EmailAddressId}"
+@page "/EmailEdit/{CId}"
+@page "/EmailEdit/{CId}/{EmailAddressId}"
 @inherits EmailEditBase
+<section class="column">
+    <div class="box contact-edit">
+        <h3></h3>
 
-<h3></h3>
+        @if (!Saved)
+        {
+            <EditForm Model="@Email" OnValidSubmit="@HandleValidSubmit" OnInvalidSubmit="@HandleInvalidSubmit">
+                <DataAnnotationsValidator/>
+                <ValidationSummary/>
 
-@if (!Saved)
-{
-    <EditForm Model="@Email" OnValidSubmit="@HandleValidSubmit" OnInvalidSubmit="@HandleInvalidSubmit">
-        <DataAnnotationsValidator/>
-        <ValidationSummary/>
+                <div class="field">
+                    <label for="type" class="label">Type: </label>
+                    <div class="control">
+                        <InputText id="type" class="input" @bind-Value="@Email.Type" placeholder="Type e.g. Private"></InputText>
+                        <ValidationMessage class="" For="@(() => Email.Email)"/>
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="emailAddress" class="label">Email: </label>
+                    <div class="control">
+                        <InputText id="emailAddress" class="input" @bind-Value="@Email.Email" placeholder="email@example.com"></InputText>
+                        <ValidationMessage class="" For="@(() => Email.Email)"/>
+                    </div>
+                </div>
 
-        <div class="field">
-            <label for="type" class="label">Type: </label>
-            <div class="control">
-                <InputText id="type" class="input" @bind-Value="@Email.Type" placeholder="Type e.g. Private"></InputText>
-                <ValidationMessage class="" For="@(() => Email.Email)"/>
-            </div>
-        </div>
-        <div class="field">
-            <label for="emailAddress" class="label">Email: </label>
-            <div class="control">
-                <InputText id="emailAddress" class="input" @bind-Value="@Email.Email" placeholder="email@example.com"></InputText>
-                <ValidationMessage class="" For="@(() => Email.Email)"/>
-            </div>
-        </div>
-
-    </EditForm>
-}
-else
-{
-    <article class="message @StatusClass">
-        <div class="message-header">
-            <p>@MessageTitle</p>
-        </div>
-        <div class="message-body">
-            @Message
-        </div>
-    </article>
-    <a class="button is-info is-outlined" @onclick="@NavigateToContact">Back to overview</a>
-}
+            </EditForm>
+        }
+        else
+        {
+            <article class="message @StatusClass">
+                <div class="message-header">
+                    <p>@MessageTitle</p>
+                </div>
+                <div class="message-body">
+                    @Message
+                </div>
+            </article>
+            <a class="button is-info is-outlined" @onclick="@NavigateToContact">Back to overview</a>
+        }
+    </div>
+</section>
