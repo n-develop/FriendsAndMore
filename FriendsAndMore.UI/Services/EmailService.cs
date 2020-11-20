@@ -1,4 +1,5 @@
 using System.Net.Http;
+using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using FriendsAndMore.UI.Models;
@@ -25,9 +26,12 @@ namespace FriendsAndMore.UI.Services
             throw new System.NotImplementedException();
         }
 
-        public Task UpdateEmailAddress(EmailAddress emailAddress)
+        public async Task UpdateEmailAddress(EmailAddress emailAddress)
         {
-            throw new System.NotImplementedException();
+            var serializedEmail = JsonSerializer.Serialize(emailAddress, new JsonSerializerOptions{ PropertyNameCaseInsensitive = true});
+            var content = new StringContent(serializedEmail, Encoding.UTF8, "application/json");
+            
+            await _httpClient.PutAsync("api/email", content);
         }
 
         public Task DeleteEmailAddress(int emailAddressId)

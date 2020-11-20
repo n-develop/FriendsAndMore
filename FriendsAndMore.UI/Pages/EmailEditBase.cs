@@ -48,9 +48,34 @@ namespace FriendsAndMore.UI.Pages
             }
         }
 
-        protected void HandleValidSubmit()
+        protected async Task HandleValidSubmit()
         {
-            throw new NotImplementedException();
+            if (Email.EmailAddressId == 0)
+            {
+                // add the email address via service
+                /*if (addedEmailAddress != null)
+                {
+                    StatusClass = "is-success";
+                    MessageTitle = "Email address added";
+                    Message = "New email address added successfully.";
+                    Saved = true;
+                }
+                else
+                {
+                    StatusClass = "is-danger";
+                    MessageTitle = "Oops!";
+                    Message = "Something went wrong adding the new contact. Please try again.";
+                    Saved = false;
+                }*/
+            }
+            else
+            {
+                await EmailService.UpdateEmailAddress(Email);
+                StatusClass = "is-success";
+                MessageTitle = "Email address updated";
+                Message = "The email address was updated successfully.";
+                Saved = true;
+            }
         }
 
         protected void HandleInvalidSubmit()
