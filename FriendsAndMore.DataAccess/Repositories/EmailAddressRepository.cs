@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using FriendsAndMore.DataAccess.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -16,6 +17,7 @@ namespace FriendsAndMore.DataAccess.Repositories
         public async Task<EmailAddress> GetEmailAddressById(int id)
         {
             return await _dbContext.EmailAddresses.Include(e => e.Contact)
+                .AsNoTracking()
                 .FirstOrDefaultAsync(e => e.EmailAddressId == id);
         }
         
@@ -35,6 +37,19 @@ namespace FriendsAndMore.DataAccess.Repositories
             }
 
             return null;
+        }
+        
+        public async Task<EmailAddress> AddEmailAddress(EmailAddress emailAddress)
+        {
+            if (emailAddress.EmailAddressId != 0)
+            {
+                throw new Exception("New email addresses must not have a EmailAddressId");
+            }
+
+            var added = await _dbContext.EmailAddresses.AddAsync(emailAddress);
+            await _dbContext.SaveChangesAsync();
+
+            return added.Entity;
         }
     }
 }

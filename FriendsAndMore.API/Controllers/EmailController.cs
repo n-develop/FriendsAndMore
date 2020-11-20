@@ -1,3 +1,4 @@
+using System.Net;
 using System.Threading.Tasks;
 using FriendsAndMore.DataAccess.Entities;
 using FriendsAndMore.DataAccess.Repositories;
@@ -44,6 +45,30 @@ namespace FriendsAndMore.API.Controllers
             _emailAddressRepository.UpdateEmailAddress(emailAddress);
 
             return NoContent();
+        }
+        
+        [HttpPost]
+        public async Task<IActionResult> Create([FromBody] EmailAddress emailAddress)
+        {
+            if (emailAddress == null)
+                return BadRequest();
+
+            if (emailAddress.Type == string.Empty || emailAddress.Email == string.Empty)
+            {
+                ModelState.AddModelError("Type/Email", "The type and email shouldn't be empty");
+            }
+
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var knownEmailAddress = await _emailAddressRepository.GetEmailAddressById(emailAddress.EmailAddressId);
+
+            if (knownEmailAddress != null)
+                return new StatusCodeResult((int)HttpStatusCode.Conflict);
+
+            var addedEmailAddress = await _emailAddressRepository.AddEmailAddress(emailAddress);
+
+            return Ok(addedEmailAddress);
         }
     }
 }

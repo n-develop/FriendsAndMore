@@ -21,9 +21,14 @@ namespace FriendsAndMore.UI.Services
             return JsonSerializer.Deserialize<EmailAddress>(result, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
         }
 
-        public Task<EmailAddress> AddEmailAddress(EmailAddress emailAddress)
+        public async Task<EmailAddress> AddEmailAddress(EmailAddress emailAddress)
         {
-            throw new System.NotImplementedException();
+            var serializedEmail = JsonSerializer.Serialize(emailAddress, new JsonSerializerOptions{ PropertyNameCaseInsensitive = true});
+            var content = new StringContent(serializedEmail, Encoding.UTF8, "application/json");
+            
+            var addedResult = await _httpClient.PostAsync("api/email", content);
+            var response = await addedResult.Content.ReadAsStringAsync();
+            return JsonSerializer.Deserialize<EmailAddress>(response, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
         }
 
         public async Task UpdateEmailAddress(EmailAddress emailAddress)

@@ -7,5 +7,6 @@ namespace FriendsAndMore.DataAccess.Repositories
     {
         Task<EmailAddress> GetEmailAddressById(int id);
         Task<EmailAddress> UpdateEmailAddress(EmailAddress emailAddress);
+        Task<EmailAddress> AddEmailAddress(EmailAddress emailAddress);
     }
 }

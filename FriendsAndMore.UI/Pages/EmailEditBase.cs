@@ -52,8 +52,8 @@ namespace FriendsAndMore.UI.Pages
         {
             if (Email.EmailAddressId == 0)
             {
-                // add the email address via service
-                /*if (addedEmailAddress != null)
+                var addedEmailAddress = EmailService.AddEmailAddress(Email);
+                if (addedEmailAddress != null)
                 {
                     StatusClass = "is-success";
                     MessageTitle = "Email address added";
@@ -66,7 +66,7 @@ namespace FriendsAndMore.UI.Pages
                     MessageTitle = "Oops!";
                     Message = "Something went wrong adding the new contact. Please try again.";
                     Saved = false;
-                }*/
+                }
             }
             else
             {
