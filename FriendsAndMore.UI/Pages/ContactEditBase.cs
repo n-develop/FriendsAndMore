@@ -184,5 +184,33 @@ namespace FriendsAndMore.UI.Pages
             Message = "The status update is deleted successfully.";
             Saved = true;
         }
+        
+        protected void CreateTelephoneNumber()
+        {
+            NavigationManager.NavigateTo("/TelephoneNumberEdit/" + Contact.ContactId);
+        }
+        
+        protected void UpdateTelephoneNumber(int id)
+        {
+            NavigationManager.NavigateTo("/TelephoneNumberEdit/" + Contact.ContactId + "/" + id);
+        }
+        
+        protected void DeleteTelephoneNumber(int id)
+        {
+            if (id == 0)
+            {
+                StatusClass = "is-danger";
+                MessageTitle = "Oops!";
+                Message = "Something went wrong deleting a telephone number. Please try again.";
+                Saved = false;
+            }
+
+            EntityService.Delete<TelephoneNumber>(id);
+
+            StatusClass = "is-success";
+            MessageTitle = "Deleted";
+            Message = "The telephone number is deleted successfully.";
+            Saved = true;
+        }
     }
 }

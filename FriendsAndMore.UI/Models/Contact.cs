@@ -10,6 +10,7 @@ namespace FriendsAndMore.UI.Models
             EmailAddresses = new List<EmailAddress>();
             Relationships = new List<Relationship>();
             StatusUpdates = new List<StatusUpdate>();
+            TelephoneNumbers = new List<TelephoneNumber>();
         }
         
         public int ContactId { get; set; }
@@ -33,6 +34,8 @@ namespace FriendsAndMore.UI.Models
         public List<Relationship> Relationships { get; set; }
 
         public List<StatusUpdate> StatusUpdates { get; set; }
+        
+        public List<TelephoneNumber> TelephoneNumbers { get; set; }
 
         public List<StatusUpdate> Timeline
         {
