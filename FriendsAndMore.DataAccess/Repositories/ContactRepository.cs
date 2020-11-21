@@ -21,6 +21,7 @@ namespace FriendsAndMore.DataAccess.Repositories
             return await _dbContext.Contacts
                 .Include(c => c.EmailAddresses)
                 .Include(c => c.Relationships)
+                .Include(c => c.StatusUpdates)
                 .AsNoTracking()
                 .FirstOrDefaultAsync(c => c.ContactId == contactId);
         }
@@ -29,7 +30,6 @@ namespace FriendsAndMore.DataAccess.Repositories
         {
             return await _dbContext.Contacts
                 .Include(c => c.EmailAddresses)
-                .Include(c => c.Relationships)
                 .AsNoTracking()
                 .Take(20)
                 .ToListAsync();
