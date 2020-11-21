@@ -12,15 +12,9 @@ namespace FriendsAndMore.UI.Pages
 
         [Inject]
         public IContactService ContactService { get; set; }
-    
-        [Inject]
-        public IEmailService EmailService { get; set; }
 
         [Inject]
         public IEntityDataService EntityService { get; set; }
-
-        [Inject]
-        public IStatusUpdateService StatusUpdateService { get; set; }
 
         [Parameter]
         public string ContactId { get; set; }
@@ -127,7 +121,7 @@ namespace FriendsAndMore.UI.Pages
                 Saved = false;
             }
 
-            EmailService.DeleteEmailAddress(emailId);
+            EntityService.Delete<EmailAddress>(emailId);
 
             StatusClass = "is-success";
             MessageTitle = "Deleted";
@@ -183,7 +177,7 @@ namespace FriendsAndMore.UI.Pages
                 Saved = false;
             }
 
-            StatusUpdateService.DeleteStatusUpdate(statusUpdateId);
+            EntityService.Delete<StatusUpdate>(statusUpdateId);
 
             StatusClass = "is-success";
             MessageTitle = "Deleted";

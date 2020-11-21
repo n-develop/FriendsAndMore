@@ -31,8 +31,6 @@ namespace FriendsAndMore.UI
             });
 
             services.AddScoped<IContactService, ContactService>();
-            services.AddScoped<IEmailService, EmailService>();
-            services.AddScoped<IStatusUpdateService, StatusUpdateService>();
             services.AddScoped<IEntityDataService, EntityDataService>();
         }
 

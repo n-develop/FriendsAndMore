@@ -11,7 +11,7 @@ namespace FriendsAndMore.UI.Pages
         public NavigationManager NavigationManager { get; set; }
 
         [Inject]
-        public IStatusUpdateService StatusUpdateService { get; set; }
+        public IEntityDataService EntityService { get; set; }
         
         protected StatusUpdate StatusUpdate { get; set; } = new StatusUpdate();
         
@@ -43,7 +43,7 @@ namespace FriendsAndMore.UI.Pages
             }
             else
             {
-                StatusUpdate = await StatusUpdateService.GetStatusUpdateById(statusUpdateId);
+                StatusUpdate = await EntityService.GetById<StatusUpdate>(statusUpdateId);
             }
         }
         
@@ -51,7 +51,7 @@ namespace FriendsAndMore.UI.Pages
         {
             if (StatusUpdate.StatusUpdateId == 0)
             {
-                var addedStatusUpdate = StatusUpdateService.AddStatusUpdate(StatusUpdate);
+                var addedStatusUpdate = EntityService.Add(StatusUpdate);
                 if (addedStatusUpdate != null)
                 {
                     StatusClass = "is-success";
@@ -69,7 +69,7 @@ namespace FriendsAndMore.UI.Pages
             }
             else
             {
-                await StatusUpdateService.UpdateStatusUpdate(StatusUpdate);
+                await EntityService.Update(StatusUpdate);
                 StatusClass = "is-success";
                 MessageTitle = "Relationship updated";
                 Message = "The relationship was updated successfully.";

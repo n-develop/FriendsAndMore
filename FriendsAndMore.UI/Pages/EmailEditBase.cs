@@ -11,7 +11,7 @@ namespace FriendsAndMore.UI.Pages
         public NavigationManager NavigationManager { get; set; }
 
         [Inject]
-        public IEmailService EmailService { get; set; }
+        public IEntityDataService EntityService { get; set; }
 
         protected EmailAddress Email { get; set; } = new EmailAddress();
         
@@ -43,7 +43,7 @@ namespace FriendsAndMore.UI.Pages
             }
             else
             {
-                Email = await EmailService.GetEmailAddressById(emailId);
+                Email = await EntityService.GetById<EmailAddress>(emailId);
             }
         }
 
@@ -51,7 +51,7 @@ namespace FriendsAndMore.UI.Pages
         {
             if (Email.EmailAddressId == 0)
             {
-                var addedEmailAddress = EmailService.AddEmailAddress(Email);
+                var addedEmailAddress = EntityService.Add(Email);
                 if (addedEmailAddress != null)
                 {
                     StatusClass = "is-success";
@@ -69,7 +69,7 @@ namespace FriendsAndMore.UI.Pages
             }
             else
             {
-                await EmailService.UpdateEmailAddress(Email);
+                await EntityService.Update(Email);
                 StatusClass = "is-success";
                 MessageTitle = "Email address updated";
                 Message = "The email address was updated successfully.";

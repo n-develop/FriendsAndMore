@@ -8,11 +8,11 @@ namespace FriendsAndMore.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class EmailController : Controller
+    public class EmailAddressController : Controller
     {
         private readonly IEmailAddressRepository _emailAddressRepository;
 
-        public EmailController(IEmailAddressRepository emailAddressRepository)
+        public EmailAddressController(IEmailAddressRepository emailAddressRepository)
         {
             _emailAddressRepository = emailAddressRepository;
         }
