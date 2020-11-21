@@ -31,5 +31,7 @@ namespace FriendsAndMore.DataAccess.Entities
         public virtual List<Relationship> Relationships { get; set; }
 
         public virtual List<StatusUpdate> StatusUpdates { get; set; }
+
+        public virtual List<TelephoneNumber> TelephoneNumbers { get; set; }
     }
 }

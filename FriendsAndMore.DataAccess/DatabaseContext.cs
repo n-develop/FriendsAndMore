@@ -14,6 +14,7 @@ namespace FriendsAndMore.DataAccess
         public DbSet<EmailAddress> EmailAddresses { get; set; }
         public DbSet<Relationship> Relationships { get; set; }
         public DbSet<StatusUpdate> StatusUpdates { get; set; }
+        public DbSet<TelephoneNumber> TelephoneNumbers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -23,6 +24,35 @@ namespace FriendsAndMore.DataAccess
             modelBuilder.Entity<Contact>().HasData(new Contact {ContactId = 2, FirstName = "Manuela", LastName = "Mustermann"});
             modelBuilder.Entity<Contact>().HasData(new Contact {ContactId = 3, FirstName = "John", LastName = "Smith"});
 
+            modelBuilder.Entity<TelephoneNumber>().HasData(new TelephoneNumber
+            {
+                Id = 1,
+                ContactId = 1,
+                Telephone = "555 - 2019383",
+                Type = "Private"
+            });
+            modelBuilder.Entity<TelephoneNumber>().HasData(new TelephoneNumber
+            {
+                Id = 2,
+                ContactId = 1,
+                Telephone = "555 - 77352",
+                Type = "Work"
+            });
+            modelBuilder.Entity<TelephoneNumber>().HasData(new TelephoneNumber
+            {
+                Id = 3,
+                ContactId = 2,
+                Telephone = "555 - 104834",
+                Type = "Private"
+            });
+            modelBuilder.Entity<TelephoneNumber>().HasData(new TelephoneNumber
+            {
+                Id = 4,
+                ContactId = 3,
+                Telephone = "555 - 095237",
+                Type = "Mobile"
+            });
+            
             modelBuilder.Entity<StatusUpdate>().HasData(new StatusUpdate
             {
                 StatusUpdateId = 1,

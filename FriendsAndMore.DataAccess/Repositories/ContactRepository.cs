@@ -22,6 +22,7 @@ namespace FriendsAndMore.DataAccess.Repositories
                 .Include(c => c.EmailAddresses)
                 .Include(c => c.Relationships)
                 .Include(c => c.StatusUpdates)
+                .Include(c => c.TelephoneNumbers)
                 .AsNoTracking()
                 .FirstOrDefaultAsync(c => c.ContactId == contactId);
         }
