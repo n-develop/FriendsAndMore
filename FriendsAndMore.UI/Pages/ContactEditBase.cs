@@ -17,7 +17,7 @@ namespace FriendsAndMore.UI.Pages
         public IEmailService EmailService { get; set; }
 
         [Inject]
-        public IRelationshipService RelationshipService { get; set; }
+        public IEntityDataService EntityService { get; set; }
 
         [Inject]
         public IStatusUpdateService StatusUpdateService { get; set; }
@@ -155,7 +155,7 @@ namespace FriendsAndMore.UI.Pages
                 Saved = false;
             }
 
-            RelationshipService.DeleteRelationship(relationshipId);
+            EntityService.Delete<Relationship>(relationshipId);
 
             StatusClass = "is-success";
             MessageTitle = "Deleted";
