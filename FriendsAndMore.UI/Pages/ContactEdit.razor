@@ -39,7 +39,7 @@
                 <div class="field">
                     <label for="address" class="label">Address: </label>
                     <div class="control">
-                        <InputText id="address" class="input" @bind-Value="@Contact.Address" placeholder="Address"></InputText>
+                        <InputTextArea id="address" class="textarea" @bind-Value="@Contact.Address" placeholder="Address"></InputTextArea>
                         <ValidationMessage class="" For="@(() => Contact.Address)"/>
                     </div>
                 </div>
