@@ -1,0 +1,47 @@
+@page "/StatusUpdateEdit/{ContactId}"
+@page "/StatusUpdateEdit/{ContactId}/{StatusUpdateId}"
+@inherits StatusUpdateEditBase
+
+<section class="column">
+    <div class="box contact-edit">
+        <h3></h3>
+
+        @if (!Saved)
+        {
+            <EditForm Model="@StatusUpdate" OnValidSubmit="@HandleValidSubmit" OnInvalidSubmit="@HandleInvalidSubmit">
+                <DataAnnotationsValidator/>
+                <ValidationSummary/>
+
+                <div class="field">
+                    <label for="created" class="label">Created: </label>
+                    <div class="control">
+                        <InputDate id="created" class="input" @bind-Value="@StatusUpdate.Created"></InputDate>
+                        <ValidationMessage class="" For="@(() => StatusUpdate.Created)"/>
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="statusText" class="label">Status Text: </label>
+                    <div class="control">
+                        <InputText id="statusText" class="input" @bind-Value="@StatusUpdate.StatusText" placeholder="What happened?"></InputText>
+                        <ValidationMessage class="" For="@(() => StatusUpdate.StatusText)"/>
+                    </div>
+                </div>
+
+                <button type="submit" class="button is-info is-medium">Save</button>
+                <a class="button is-danger is-medium" @onclick="@NavigateToContact">Cancel</a>
+            </EditForm>
+        }
+        else
+        {
+            <article class="message @StatusClass">
+                <div class="message-header">
+                    <p>@MessageTitle</p>
+                </div>
+                <div class="message-body">
+                    @Message
+                </div>
+            </article>
+            <a class="button is-info is-outlined" @onclick="@NavigateToContact">Back to contact</a>
+        }
+    </div>
+</section>
