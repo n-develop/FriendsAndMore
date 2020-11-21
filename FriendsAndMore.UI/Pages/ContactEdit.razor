@@ -46,15 +46,21 @@
 
                 <div class="field">
                     <label for="employer" class="label">Employer: </label>
-                    <div class="control">
+                    <div class="control has-icons-left">
                         <InputText id="employer" class="input" @bind-Value="@Contact.Employer" placeholder="Employer"></InputText>
+                        <span class="icon is-small is-left">
+                            <i class="fa fa-building"></i>
+                        </span>
                         <ValidationMessage class="" For="@(() => Contact.Employer)"/>
                     </div>
                 </div>
                 <div class="field">
                     <label for="businessTitle" class="label">BusinessTitle: </label>
-                    <div class="control">
+                    <div class="control has-icons-left">
                         <InputText id="businessTitle" class="input" @bind-Value="@Contact.BusinessTitle" placeholder="Business Title"></InputText>
+                        <span class="icon is-small is-left">
+                            <i class="fa fa-briefcase"></i>
+                        </span>
                         <ValidationMessage class="" For="@(() => Contact.BusinessTitle)"/>
                     </div>
                 </div>
@@ -200,8 +206,11 @@
 
                 <div class="field">
                     <label for="tags" class="label">Tags: </label>
-                    <div class="control">
+                    <div class="control has-icons-left">
                         <InputText id="tags" class="input" @bind-Value="@Contact.Tags" placeholder="football, family"></InputText>
+                        <span class="icon is-small is-left">
+                            <i class="fa fa-tag"></i>
+                        </span>
                         <ValidationMessage class="" For="@(() => Contact.Tags)"/>
                     </div>
                 </div>
