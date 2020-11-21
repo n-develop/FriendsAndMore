@@ -1,0 +1,47 @@
+@page "/TelephoneNumberEdit/{ContactId}"
+@page "/TelephoneNumberEdit/{ContactId}/{TelephoneNumberId}"
+@inherits TelephoneNumberEditBase
+
+<section class="column">
+    <div class="box contact-edit">
+        <h3></h3>
+
+        @if (!Saved)
+        {
+            <EditForm Model="@TelephoneNumber" OnValidSubmit="@HandleValidSubmit" OnInvalidSubmit="@HandleInvalidSubmit">
+                <DataAnnotationsValidator/>
+                <ValidationSummary/>
+
+                <div class="field">
+                    <label for="type" class="label">Type: </label>
+                    <div class="control">
+                        <InputText id="type" class="input" @bind-Value="@TelephoneNumber.Type" placeholder="Type e.g. Private"></InputText>
+                        <ValidationMessage class="" For="@(() => TelephoneNumber.Type)"/>
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="person" class="label">Telephone Number: </label>
+                    <div class="control">
+                        <InputText id="person" class="input" @bind-Value="@TelephoneNumber.Telephone" placeholder="555 - 12345"></InputText>
+                        <ValidationMessage class="" For="@(() => TelephoneNumber.Telephone)"/>
+                    </div>
+                </div>
+
+                <button type="submit" class="button is-info is-medium">Save</button>
+                <a class="button is-danger is-medium" @onclick="@NavigateToContact">Cancel</a>
+            </EditForm>
+        }
+        else
+        {
+            <article class="message @StatusClass">
+                <div class="message-header">
+                    <p>@MessageTitle</p>
+                </div>
+                <div class="message-body">
+                    @Message
+                </div>
+            </article>
+            <a class="button is-info is-outlined" @onclick="@NavigateToContact">Back to contact</a>
+        }
+    </div>
+</section>
