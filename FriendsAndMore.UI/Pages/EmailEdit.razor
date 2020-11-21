@@ -15,7 +15,7 @@
                     <label for="type" class="label">Type: </label>
                     <div class="control">
                         <InputText id="type" class="input" @bind-Value="@Email.Type" placeholder="Type e.g. Private"></InputText>
-                        <ValidationMessage class="" For="@(() => Email.Email)"/>
+                        <ValidationMessage class="" For="@(() => Email.Type)"/>
                     </div>
                 </div>
                 <div class="field">
