@@ -13,5 +13,12 @@ namespace FriendsAndMore.UI.Models
         public string Type { get; set; }
 
         public int ContactId { get; set; }
+        
+        public string TelephoneNormalized => string.IsNullOrEmpty(Telephone)
+            ? string.Empty
+            : Telephone.Replace(" ", "")
+                .Replace("-", "")
+                .Replace("(", "")
+                .Replace(")", "");
     }
 }
