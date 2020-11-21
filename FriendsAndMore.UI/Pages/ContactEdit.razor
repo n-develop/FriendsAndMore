@@ -79,139 +79,184 @@
                 <div class="panel">
                     <p class="panel-heading">
                         Emails
-                        <a class="button is-pulled-right is-small is-success" @onclick="@CreateEmailAddress">
-                            <i class="fa fa-plus-circle"></i>
-                        </a>
+                        @if (Contact.Id != 0)
+                        {
+                            <a class="button is-pulled-right is-small is-success" @onclick="@CreateEmailAddress">
+                                <i class="fa fa-plus-circle"></i>
+                            </a>    
+                        }
                     </p>
-                
-                    @foreach (var email in Contact.EmailAddresses)
+                    @if (Contact.Id == 0)
                     {
                         <div class="panel-block">
-                            <label class="label">@email.Type</label>
-                            <div class="field has-addons">
-                                <p class="control">
-                                    <a class="button is-info" href="mailto:@email.Email">
-                                        <i class="fa fa-envelope"></i>
-                                    </a>
-                                </p>
-                                <div class="control is-expanded">
-                                    <input class="input" value="@email.Email" type="email" placeholder="email@@domoain.com" disabled="disabled">
-                                </div>
-                                <p class="control">
-                                    <a class="button is-warning" @onclick="() => { UpdateEmailAddress(email.Id); }">
-                                        <i class="fa fa-pencil-alt"></i>
-                                    </a>
-                                </p>
-                                <p class="control">
-                                    <a class="button is-danger" @onclick="() => { DeleteEmailAddress(email.Id); }">
-                                        <i class="fa fa-minus-circle"></i>
-                                    </a>
-                                </p>
-                            </div>
+                            You have to save the contact before you can add emails
                         </div>
+                    }
+                    else
+                    {
+                        foreach (var email in Contact.EmailAddresses)
+                        {
+                            <div class="panel-block">
+                                <label class="label">@email.Type</label>
+                                <div class="field has-addons">
+                                    <p class="control">
+                                        <a class="button is-info" href="mailto:@email.Email">
+                                            <i class="fa fa-envelope"></i>
+                                        </a>
+                                    </p>
+                                    <div class="control is-expanded">
+                                        <input class="input" value="@email.Email" type="email" placeholder="email@@domoain.com" disabled="disabled">
+                                    </div>
+                                    <p class="control">
+                                        <a class="button is-warning" @onclick="() => { UpdateEmailAddress(email.Id); }">
+                                            <i class="fa fa-pencil-alt"></i>
+                                        </a>
+                                    </p>
+                                    <p class="control">
+                                        <a class="button is-danger" @onclick="() => { DeleteEmailAddress(email.Id); }">
+                                            <i class="fa fa-minus-circle"></i>
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                        }
                     }
                 </div>
                 
                 <div class="panel">
                     <p class="panel-heading">
                         Telephone Numbers
-                        <a class="button is-pulled-right is-small is-success" @onclick="@CreateTelephoneNumber">
-                            <i class="fa fa-plus-circle"></i>
-                        </a>
+                        @if (Contact.Id != 0)
+                        {
+                            <a class="button is-pulled-right is-small is-success" @onclick="@CreateTelephoneNumber">
+                                <i class="fa fa-plus-circle"></i>
+                            </a>
+                        }
                     </p>
-                                
-                    @foreach (var telephone in Contact.TelephoneNumbers)
+                             
+                    @if (Contact.Id == 0)
                     {
                         <div class="panel-block">
-                            <label class="label">@telephone.Type</label>
-                            <div class="field has-addons">
-                                <p class="control">
-                                    <a class="button is-info" href="tel:@telephone.TelephoneNormalized">
-                                        <i class="fa fa-phone"></i>
-                                    </a>
-                                </p>
-                                <div class="control is-expanded">
-                                    <input class="input" value="@telephone.Telephone" type="tel" placeholder="555 - 12345" disabled="disabled">
-                                </div>
-                                <p class="control">
-                                    <a class="button is-warning" @onclick="() => { UpdateTelephoneNumber(telephone.Id); }">
-                                        <i class="fa fa-pencil-alt"></i>
-                                    </a>
-                                </p>
-                                <p class="control">
-                                    <a class="button is-danger" @onclick="() => { DeleteTelephoneNumber(telephone.Id); }">
-                                        <i class="fa fa-minus-circle"></i>
-                                    </a>
-                                </p>
-                            </div>
+                            You have to save the contact before you can add telephone numbers
                         </div>
                     }
+                    else
+                    {
+                        foreach (var telephone in Contact.TelephoneNumbers)
+                        {
+                            <div class="panel-block">
+                                <label class="label">@telephone.Type</label>
+                                <div class="field has-addons">
+                                    <p class="control">
+                                        <a class="button is-info" href="tel:@telephone.TelephoneNormalized">
+                                            <i class="fa fa-phone"></i>
+                                        </a>
+                                    </p>
+                                    <div class="control is-expanded">
+                                        <input class="input" value="@telephone.Telephone" type="tel" placeholder="555 - 12345" disabled="disabled">
+                                    </div>
+                                    <p class="control">
+                                        <a class="button is-warning" @onclick="() => { UpdateTelephoneNumber(telephone.Id); }">
+                                            <i class="fa fa-pencil-alt"></i>
+                                        </a>
+                                    </p>
+                                    <p class="control">
+                                        <a class="button is-danger" @onclick="() => { DeleteTelephoneNumber(telephone.Id); }">
+                                            <i class="fa fa-minus-circle"></i>
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                        }
+                    }                        
                 </div>
                 
                 <div class="panel">
                     <p class="panel-heading">
                         Relationships
+                    @if (Contact.Id != 0)
+                    {
                         <a class="button is-pulled-right is-small is-success" @onclick="@CreateRelationship">
                             <i class="fa fa-plus-circle"></i>
                         </a>
+                    }
                     </p>
-                                
-                    @foreach (var relationship in Contact.Relationships)
+                    @if (Contact.Id == 0)
                     {
                         <div class="panel-block">
-                            <label class="label">@relationship.Type</label>
-                            <div class="field has-addons">
-                                <p class="control">
-                                    <a class="button is-info"> @* a click here should execute a search for the name *@
-                                        <i class="fa fa-search"></i>
-                                    </a>
-                                </p>
-                                <div class="control is-expanded">
-                                    <input class="input" value="@relationship.Person" type="text" placeholder="e.g. Jamie Oliver" disabled="disabled">
-                                </div>
-                                <p class="control">
-                                    <a class="button is-warning" @onclick="() => { UpdateRelationship(relationship.Id); }">
-                                        <i class="fa fa-pencil-alt"></i>
-                                    </a>
-                                </p>
-                                <p class="control">
-                                    <a class="button is-danger" @onclick="() => { DeleteRelationship(relationship.Id); }">
-                                        <i class="fa fa-minus-circle"></i>
-                                    </a>
-                                </p>
-                            </div>
+                            You have to save the contact before you can add relationships
                         </div>
                     }
+                    else
+                    {
+                        foreach (var relationship in Contact.Relationships)
+                        {
+                            <div class="panel-block">
+                                <label class="label">@relationship.Type</label>
+                                <div class="field has-addons">
+                                    <p class="control">
+                                        <a class="button is-info"> @* a click here should execute a search for the name *@
+                                            <i class="fa fa-search"></i>
+                                        </a>
+                                    </p>
+                                    <div class="control is-expanded">
+                                        <input class="input" value="@relationship.Person" type="text" placeholder="e.g. Jamie Oliver" disabled="disabled">
+                                    </div>
+                                    <p class="control">
+                                        <a class="button is-warning" @onclick="() => { UpdateRelationship(relationship.Id); }">
+                                            <i class="fa fa-pencil-alt"></i>
+                                        </a>
+                                    </p>
+                                    <p class="control">
+                                        <a class="button is-danger" @onclick="() => { DeleteRelationship(relationship.Id); }">
+                                            <i class="fa fa-minus-circle"></i>
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                        }
+                    }                        
                 </div>
                 
                 <div class="panel">
                     <p class="panel-heading">
                         Status Updates
-                        <a class="button is-pulled-right is-small is-success" @onclick="@CreateStatusUpdate"> 
-                            <i class="fa fa-plus-circle"></i>
-                        </a>
+                        @if (Contact.Id != 0)
+                        {
+                            <a class="button is-pulled-right is-small is-success" @onclick="@CreateStatusUpdate">
+                                <i class="fa fa-plus-circle"></i>
+                            </a>
+                        }                            
                     </p>
-                                                
-                    @foreach (var statusUpdate in Contact.Timeline)
+                    @if (Contact.Id == 0)
                     {
                         <div class="panel-block">
-                            <label class="label">@statusUpdate.Created.ToString("dd.MM.yyyy")</label>
-                            <div class="field has-addons">
-                                <div class="control is-expanded">
-                                    <input class="input" value="@statusUpdate.StatusText" type="text" disabled="disabled">
-                                </div>
-                                <p class="control">
-                                    <a class="button is-warning" @onclick="() => { UpdateStatusUpdate(statusUpdate.Id); }">
-                                        <i class="fa fa-pencil-alt"></i>
-                                    </a>
-                                </p>
-                                <p class="control">
-                                    <a class="button is-danger" @onclick="() => { DeleteStatusUpdate(statusUpdate.Id); }">
-                                        <i class="fa fa-minus-circle"></i>
-                                    </a>
-                                </p>
-                            </div>
+                            You have to save the contact before you can add status updates
                         </div>
+                    }
+                    else
+                    {
+                        foreach (var statusUpdate in Contact.Timeline)
+                        {
+                            <div class="panel-block">
+                                <label class="label">@statusUpdate.Created.ToString("dd.MM.yyyy")</label>
+                                <div class="field has-addons">
+                                    <div class="control is-expanded">
+                                        <input class="input" value="@statusUpdate.StatusText" type="text" disabled="disabled">
+                                    </div>
+                                    <p class="control">
+                                        <a class="button is-warning" @onclick="() => { UpdateStatusUpdate(statusUpdate.Id); }">
+                                            <i class="fa fa-pencil-alt"></i>
+                                        </a>
+                                    </p>
+                                    <p class="control">
+                                        <a class="button is-danger" @onclick="() => { DeleteStatusUpdate(statusUpdate.Id); }">
+                                            <i class="fa fa-minus-circle"></i>
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                        }
                     }
                 </div>
 
