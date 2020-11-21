@@ -5,6 +5,11 @@ namespace FriendsAndMore.UI.Models
 {
     public class StatusUpdate
     {
+        public StatusUpdate()
+        {
+            Created = DateTime.Now.Date;
+        }
+        
         public int StatusUpdateId { get; set; }
         
         [Required]
