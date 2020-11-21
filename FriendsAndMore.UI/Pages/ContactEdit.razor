@@ -45,6 +45,17 @@
                 </div>
 
                 <div class="field">
+                    <label for="birthday" class="label">Birthday: </label>
+                    <div class="control has-icons-left">
+                        <InputDate id="birthday" class="input" @bind-Value="@Contact.Birthday"></InputDate>
+                        <span class="icon is-small is-left">
+                            <i class="fa fa-birthday-cake"></i>
+                        </span>
+                        <ValidationMessage class="" For="@(() => Contact.Birthday)"/>
+                    </div>
+                </div>
+                
+                <div class="field">
                     <label for="employer" class="label">Employer: </label>
                     <div class="control has-icons-left">
                         <InputText id="employer" class="input" @bind-Value="@Contact.Employer" placeholder="Employer"></InputText>

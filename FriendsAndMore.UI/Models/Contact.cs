@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -22,6 +23,8 @@ namespace FriendsAndMore.UI.Models
         public string MiddleName { get; set; }
         
         public string Address { get; set; }
+
+        public DateTime Birthday { get; set; }
         
         public string Employer { get; set; }
 
