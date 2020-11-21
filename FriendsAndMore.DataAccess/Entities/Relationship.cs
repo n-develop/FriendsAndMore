@@ -6,7 +6,7 @@ namespace FriendsAndMore.DataAccess.Entities
     public class Relationship
     {
         [Key]
-        public int RelationshipId { get; set; }
+        public int Id { get; set; }
         
         [Required]
         public string Person { get; set; }

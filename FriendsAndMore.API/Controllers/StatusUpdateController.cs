@@ -38,7 +38,7 @@ namespace FriendsAndMore.API.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var statusUpdateToUpdate = _statusUpdateRepository.GetStatusUpdateById(statusUpdate.StatusUpdateId);
+            var statusUpdateToUpdate = _statusUpdateRepository.GetStatusUpdateById(statusUpdate.Id);
 
             if (statusUpdateToUpdate == null)
                 return NotFound();
@@ -62,7 +62,7 @@ namespace FriendsAndMore.API.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var knownStatusUpdate = await _statusUpdateRepository.GetStatusUpdateById(statusUpdate.StatusUpdateId);
+            var knownStatusUpdate = await _statusUpdateRepository.GetStatusUpdateById(statusUpdate.Id);
 
             if (knownStatusUpdate != null)
                 return new StatusCodeResult((int)HttpStatusCode.Conflict);

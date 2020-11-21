@@ -6,7 +6,7 @@ namespace FriendsAndMore.DataAccess.Entities
     public class EmailAddress
     {
         [Key]
-        public int EmailAddressId { get; set; }
+        public int Id { get; set; }
         
         [Required]
         [EmailAddress]

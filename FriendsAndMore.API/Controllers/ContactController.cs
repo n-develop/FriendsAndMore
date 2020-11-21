@@ -47,7 +47,7 @@ namespace FriendsAndMore.API.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var contactToUpdate = _contactRepository.GetContactById(contact.ContactId);
+            var contactToUpdate = _contactRepository.GetContactById(contact.Id);
 
             if (contactToUpdate == null)
                 return NotFound();
@@ -71,7 +71,7 @@ namespace FriendsAndMore.API.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var knownContact = await _contactRepository.GetContactById(contact.ContactId);
+            var knownContact = await _contactRepository.GetContactById(contact.Id);
 
             if (knownContact != null)
                 return new StatusCodeResult((int)HttpStatusCode.Conflict);

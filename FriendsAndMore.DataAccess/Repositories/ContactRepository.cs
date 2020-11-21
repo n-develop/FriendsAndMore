@@ -24,7 +24,7 @@ namespace FriendsAndMore.DataAccess.Repositories
                 .Include(c => c.StatusUpdates)
                 .Include(c => c.TelephoneNumbers)
                 .AsNoTracking()
-                .FirstOrDefaultAsync(c => c.ContactId == contactId);
+                .FirstOrDefaultAsync(c => c.Id == contactId);
         }
 
         public async Task<IEnumerable<Contact>> GetContacts()
@@ -38,7 +38,7 @@ namespace FriendsAndMore.DataAccess.Repositories
 
         public async Task<Contact> UpdateContact(Contact contact)
         {
-            var foundContact = await _dbContext.Contacts.FirstOrDefaultAsync(e => e.ContactId == contact.ContactId);
+            var foundContact = await _dbContext.Contacts.FirstOrDefaultAsync(e => e.Id == contact.Id);
 
             if (foundContact != null)
             {
@@ -60,7 +60,7 @@ namespace FriendsAndMore.DataAccess.Repositories
 
         public async Task<Contact> AddContact(Contact contact)
         {
-            if (contact.ContactId != 0)
+            if (contact.Id != 0)
             {
                 throw new Exception("New contacts must not have a ContactId");
             }

@@ -37,7 +37,7 @@ namespace FriendsAndMore.API.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var emailToUpdate = _emailAddressRepository.GetEmailAddressById(emailAddress.EmailAddressId);
+            var emailToUpdate = _emailAddressRepository.GetEmailAddressById(emailAddress.Id);
 
             if (emailToUpdate == null)
                 return NotFound();
@@ -61,7 +61,7 @@ namespace FriendsAndMore.API.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var knownEmailAddress = await _emailAddressRepository.GetEmailAddressById(emailAddress.EmailAddressId);
+            var knownEmailAddress = await _emailAddressRepository.GetEmailAddressById(emailAddress.Id);
 
             if (knownEmailAddress != null)
                 return new StatusCodeResult((int)HttpStatusCode.Conflict);

@@ -49,7 +49,7 @@ namespace FriendsAndMore.UI.Pages
         
         protected async Task HandleValidSubmit()
         {
-            if (StatusUpdate.StatusUpdateId == 0)
+            if (StatusUpdate.Id == 0)
             {
                 var addedStatusUpdate = EntityService.Add(StatusUpdate);
                 if (addedStatusUpdate != null)

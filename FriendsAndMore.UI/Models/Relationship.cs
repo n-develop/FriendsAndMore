@@ -4,7 +4,7 @@ namespace FriendsAndMore.UI.Models
 {
     public class Relationship
     {
-        public int RelationshipId { get; set; }
+        public int Id { get; set; }
         
         [Required]
         public string Person { get; set; }

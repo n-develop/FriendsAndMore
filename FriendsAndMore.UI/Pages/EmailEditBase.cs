@@ -16,7 +16,7 @@ namespace FriendsAndMore.UI.Pages
         protected EmailAddress Email { get; set; } = new EmailAddress();
         
         [Parameter]
-        public string CId { get; set; }
+        public string ContactId { get; set; }
 
         [Parameter]
         public string EmailAddressId { get; set; }
@@ -30,7 +30,7 @@ namespace FriendsAndMore.UI.Pages
         {
             Saved = false;
 
-            var contactId = int.Parse(CId);
+            var contactId = int.Parse(ContactId);
 
             int.TryParse(EmailAddressId, out var emailId);
 
@@ -49,7 +49,7 @@ namespace FriendsAndMore.UI.Pages
 
         protected async Task HandleValidSubmit()
         {
-            if (Email.EmailAddressId == 0)
+            if (Email.Id == 0)
             {
                 var addedEmailAddress = EntityService.Add(Email);
                 if (addedEmailAddress != null)

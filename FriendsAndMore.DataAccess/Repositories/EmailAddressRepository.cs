@@ -18,13 +18,13 @@ namespace FriendsAndMore.DataAccess.Repositories
         {
             return await _dbContext.EmailAddresses.Include(e => e.Contact)
                 .AsNoTracking()
-                .FirstOrDefaultAsync(e => e.EmailAddressId == id);
+                .FirstOrDefaultAsync(e => e.Id == id);
         }
         
         public async Task<EmailAddress> UpdateEmailAddress(EmailAddress emailAddress)
         {
             var foundEmailAddress = await _dbContext.EmailAddresses
-                .FirstOrDefaultAsync(e => e.EmailAddressId == emailAddress.EmailAddressId);
+                .FirstOrDefaultAsync(e => e.Id == emailAddress.Id);
 
             if (foundEmailAddress != null)
             {
@@ -41,7 +41,7 @@ namespace FriendsAndMore.DataAccess.Repositories
         
         public async Task<EmailAddress> AddEmailAddress(EmailAddress emailAddress)
         {
-            if (emailAddress.EmailAddressId != 0)
+            if (emailAddress.Id != 0)
             {
                 throw new Exception("New email addresses must not have a EmailAddressId");
             }

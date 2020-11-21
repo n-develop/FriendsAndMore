@@ -20,9 +20,9 @@ namespace FriendsAndMore.DataAccess
         {
             base.OnModelCreating(modelBuilder);
             
-            modelBuilder.Entity<Contact>().HasData(new Contact {ContactId = 1, FirstName = "Max", LastName = "Mustermann"});
-            modelBuilder.Entity<Contact>().HasData(new Contact {ContactId = 2, FirstName = "Manuela", LastName = "Mustermann"});
-            modelBuilder.Entity<Contact>().HasData(new Contact {ContactId = 3, FirstName = "John", LastName = "Smith"});
+            modelBuilder.Entity<Contact>().HasData(new Contact {Id = 1, FirstName = "Max", LastName = "Mustermann"});
+            modelBuilder.Entity<Contact>().HasData(new Contact {Id = 2, FirstName = "Manuela", LastName = "Mustermann"});
+            modelBuilder.Entity<Contact>().HasData(new Contact {Id = 3, FirstName = "John", LastName = "Smith"});
 
             modelBuilder.Entity<TelephoneNumber>().HasData(new TelephoneNumber
             {
@@ -55,7 +55,7 @@ namespace FriendsAndMore.DataAccess
             
             modelBuilder.Entity<StatusUpdate>().HasData(new StatusUpdate
             {
-                StatusUpdateId = 1,
+                Id = 1,
                 ContactId = 3,
                 StatusText = "He quit his job.",
                 Created = new DateTime(2020, 3, 4)
@@ -63,14 +63,14 @@ namespace FriendsAndMore.DataAccess
             
             modelBuilder.Entity<Relationship>().HasData(new Relationship
             {
-                RelationshipId = 1,
+                Id = 1,
                 ContactId = 1,
                 Person = "Manuela Mustermann",
                 Type = "Wife"
             });
             modelBuilder.Entity<Relationship>().HasData(new Relationship
             {
-                RelationshipId = 2,
+                Id = 2,
                 ContactId = 2,
                 Person = "Max Mustermann",
                 Type = "Husband"
@@ -78,28 +78,28 @@ namespace FriendsAndMore.DataAccess
             
             modelBuilder.Entity<EmailAddress>().HasData(new EmailAddress
             {
-                EmailAddressId = 1, 
+                Id = 1, 
                 Email = "max@mustermann.de", 
                 Type = "private", 
                 ContactId = 1
             });
             modelBuilder.Entity<EmailAddress>().HasData(new EmailAddress
             {
-                EmailAddressId = 2, 
+                Id = 2, 
                 Email = "manuela@mustermann.de", 
                 Type = "private", 
                 ContactId = 2
             });
             modelBuilder.Entity<EmailAddress>().HasData(new EmailAddress
             {
-                EmailAddressId = 3, 
+                Id = 3, 
                 Email = "john.smith@ee-mail.de", 
                 Type = "private", 
                 ContactId = 3
             });
             modelBuilder.Entity<EmailAddress>().HasData(new EmailAddress
             {
-                EmailAddressId = 4, 
+                Id = 4, 
                 Email = "max@enterprise-stuff.de", 
                 Type = "work", 
                 ContactId = 1

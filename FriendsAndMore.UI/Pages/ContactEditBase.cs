@@ -44,7 +44,7 @@ namespace FriendsAndMore.UI.Pages
         
         protected async Task HandleValidSubmit()
         {
-            if (Contact.ContactId == 0) //new contact
+            if (Contact.Id == 0) //new contact
             {
                 var addedContact = await ContactService.AddContact(Contact);
                 if (addedContact != null)
@@ -85,7 +85,7 @@ namespace FriendsAndMore.UI.Pages
 
         protected void DeleteContact()
         {
-            if (Contact.ContactId == 0)
+            if (Contact.Id == 0)
             {
                 StatusClass = "is-danger";
                 MessageTitle = "Oops!";
@@ -93,7 +93,7 @@ namespace FriendsAndMore.UI.Pages
                 Saved = false;
             }
 
-            ContactService.DeleteContact(Contact.ContactId);
+            ContactService.DeleteContact(Contact.Id);
 
             StatusClass = "is-success";
             MessageTitle = "Deleted";
@@ -103,12 +103,12 @@ namespace FriendsAndMore.UI.Pages
 
         protected void CreateEmailAddress()
         {
-            NavigationManager.NavigateTo("/EmailEdit/" + Contact.ContactId);
+            NavigationManager.NavigateTo("/EmailEdit/" + Contact.Id);
         }
         
         protected void UpdateEmailAddress(int emailId)
         {
-            NavigationManager.NavigateTo("/EmailEdit/" + Contact.ContactId + "/" + emailId);
+            NavigationManager.NavigateTo("/EmailEdit/" + Contact.Id + "/" + emailId);
         }
         
         protected void DeleteEmailAddress(int emailId)
@@ -131,12 +131,12 @@ namespace FriendsAndMore.UI.Pages
         
         protected void CreateRelationship()
         {
-            NavigationManager.NavigateTo("/RelationshipEdit/" + Contact.ContactId);
+            NavigationManager.NavigateTo("/RelationshipEdit/" + Contact.Id);
         }
         
         protected void UpdateRelationship(int relationshipId)
         {
-            NavigationManager.NavigateTo("/RelationshipEdit/" + Contact.ContactId + "/" + relationshipId);
+            NavigationManager.NavigateTo("/RelationshipEdit/" + Contact.Id + "/" + relationshipId);
         }
         
         protected void DeleteRelationship(int relationshipId)
@@ -159,12 +159,12 @@ namespace FriendsAndMore.UI.Pages
         
         protected void CreateStatusUpdate()
         {
-            NavigationManager.NavigateTo("/StatusUpdateEdit/" + Contact.ContactId);
+            NavigationManager.NavigateTo("/StatusUpdateEdit/" + Contact.Id);
         }
         
         protected void UpdateStatusUpdate(int statusUpdateId)
         {
-            NavigationManager.NavigateTo("/StatusUpdateEdit/" + Contact.ContactId + "/" + statusUpdateId);
+            NavigationManager.NavigateTo("/StatusUpdateEdit/" + Contact.Id + "/" + statusUpdateId);
         }
         
         protected void DeleteStatusUpdate(int statusUpdateId)
@@ -187,12 +187,12 @@ namespace FriendsAndMore.UI.Pages
         
         protected void CreateTelephoneNumber()
         {
-            NavigationManager.NavigateTo("/TelephoneNumberEdit/" + Contact.ContactId);
+            NavigationManager.NavigateTo("/TelephoneNumberEdit/" + Contact.Id);
         }
         
         protected void UpdateTelephoneNumber(int id)
         {
-            NavigationManager.NavigateTo("/TelephoneNumberEdit/" + Contact.ContactId + "/" + id);
+            NavigationManager.NavigateTo("/TelephoneNumberEdit/" + Contact.Id + "/" + id);
         }
         
         protected void DeleteTelephoneNumber(int id)

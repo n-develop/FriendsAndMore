@@ -4,7 +4,7 @@ namespace FriendsAndMore.UI.Models
 {
     public class EmailAddress
     {
-        public int EmailAddressId { get; set; }
+        public int Id { get; set; }
         
         [Required]
         [EmailAddress]

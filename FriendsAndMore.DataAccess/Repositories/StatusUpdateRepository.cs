@@ -18,13 +18,13 @@ namespace FriendsAndMore.DataAccess.Repositories
         {
             return await _dbContext.StatusUpdates.Include(e => e.Contact)
                 .AsNoTracking()
-                .FirstOrDefaultAsync(s => s.StatusUpdateId == id);
+                .FirstOrDefaultAsync(s => s.Id == id);
         }
 
         public async Task<StatusUpdate> UpdateStatusUpdate(StatusUpdate statusUpdate)
         {
             var foundStatusUpdate = await _dbContext.StatusUpdates
-                .FirstOrDefaultAsync(e => e.StatusUpdateId == statusUpdate.StatusUpdateId);
+                .FirstOrDefaultAsync(e => e.Id == statusUpdate.Id);
 
             if (foundStatusUpdate != null)
             {
@@ -41,7 +41,7 @@ namespace FriendsAndMore.DataAccess.Repositories
 
         public async Task<StatusUpdate> AddStatusUpdate(StatusUpdate statusUpdate)
         {
-            if (statusUpdate.StatusUpdateId != 0)
+            if (statusUpdate.Id != 0)
             {
                 throw new Exception("New status update must not have a StatusUpdateId");
             }

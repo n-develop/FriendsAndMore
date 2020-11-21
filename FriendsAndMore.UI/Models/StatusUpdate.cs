@@ -10,7 +10,7 @@ namespace FriendsAndMore.UI.Models
             Created = DateTime.Now.Date;
         }
         
-        public int StatusUpdateId { get; set; }
+        public int Id { get; set; }
         
         [Required]
         public string StatusText { get; set; }

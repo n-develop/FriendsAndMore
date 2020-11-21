@@ -17,8 +17,8 @@ else
     foreach (var contact in Contacts)
     {
         <div class="column is-4">
-            <a href="@($"ContactEdit/{contact.ContactId}")">
-                <div class="card" id="contact-teaser-@contact.ContactId" data-contact-id="@contact.ContactId">
+            <a href="@($"ContactEdit/{contact.Id}")">
+                <div class="card" id="contact-teaser-@contact.Id" data-contact-id="@contact.Id">
                     <div class="card-content">
                         <div class="media">
                             <div class="media-left">
@@ -27,7 +27,7 @@ else
                                 </figure>
                             </div>
                             <div class="media-content">
-                                <span class="is-pulled-right is-4 title favorite" data-contact-id="@contact.ContactId">
+                                <span class="is-pulled-right is-4 title favorite" data-contact-id="@contact.Id">
                                     <i class="fas fa-heart"></i>
                                 </span>
                                 <p class="title is-4">@contact.FullName</p>

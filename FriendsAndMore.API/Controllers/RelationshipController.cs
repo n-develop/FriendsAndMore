@@ -37,7 +37,7 @@ namespace FriendsAndMore.API.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var relationshipToUpdate = _relationshipRepository.GetRelationshipById(relationship.RelationshipId);
+            var relationshipToUpdate = _relationshipRepository.GetRelationshipById(relationship.Id);
 
             if (relationshipToUpdate == null)
                 return NotFound();
@@ -61,7 +61,7 @@ namespace FriendsAndMore.API.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var knownRelationship = await _relationshipRepository.GetRelationshipById(relationship.RelationshipId);
+            var knownRelationship = await _relationshipRepository.GetRelationshipById(relationship.Id);
 
             if (knownRelationship != null)
                 return new StatusCodeResult((int)HttpStatusCode.Conflict);

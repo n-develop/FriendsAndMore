@@ -13,7 +13,7 @@ namespace FriendsAndMore.UI.Models
             TelephoneNumbers = new List<TelephoneNumber>();
         }
         
-        public int ContactId { get; set; }
+        public int Id { get; set; }
 
         public string FirstName { get; set; }
 

@@ -49,7 +49,7 @@ namespace FriendsAndMore.UI.Pages
         
         protected async Task HandleValidSubmit()
         {
-            if (Relationship.RelationshipId == 0)
+            if (Relationship.Id == 0)
             {
                 var addedRelationship = EntityService.Add<Relationship>(Relationship);
                 if (addedRelationship != null)

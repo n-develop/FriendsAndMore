@@ -17,6 +17,12 @@
       <Compile Update="Pages\RelationshipEditBase.cs">
         <DependentUpon>RelationshipEdit.razor</DependentUpon>
       </Compile>
+      <Compile Update="Pages\StatusUpdateEditBase.cs">
+        <DependentUpon>StatusUpdateEdit.razor</DependentUpon>
+      </Compile>
+      <Compile Update="Pages\TelephoneNumberEditBase.cs">
+        <DependentUpon>TelephoneNumberEdit.razor</DependentUpon>
+      </Compile>
     </ItemGroup>
 
     <ItemGroup>

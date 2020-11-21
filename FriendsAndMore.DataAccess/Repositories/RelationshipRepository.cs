@@ -18,13 +18,13 @@ namespace FriendsAndMore.DataAccess.Repositories
         {
             return await _dbContext.Relationships.Include(e => e.Contact)
                 .AsNoTracking()
-                .FirstOrDefaultAsync(r => r.RelationshipId == id);
+                .FirstOrDefaultAsync(r => r.Id == id);
         }
 
         public async Task<Relationship> UpdateRelationship(Relationship relationship)
         {
             var foundRelationship = await _dbContext.Relationships
-                .FirstOrDefaultAsync(e => e.RelationshipId == relationship.RelationshipId);
+                .FirstOrDefaultAsync(e => e.Id == relationship.Id);
 
             if (foundRelationship != null)
             {
@@ -41,7 +41,7 @@ namespace FriendsAndMore.DataAccess.Repositories
 
         public async Task<Relationship> AddRelationship(Relationship relationship)
         {
-            if (relationship.RelationshipId != 0)
+            if (relationship.Id != 0)
             {
                 throw new Exception("New relationship must not have a RelationshipId");
             }
