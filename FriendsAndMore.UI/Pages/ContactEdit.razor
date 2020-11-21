@@ -98,7 +98,7 @@
                 <div class="panel">
                     <p class="panel-heading">
                         Relationships
-                        <a class="button is-pulled-right is-small is-success" @onclick="@CreateRelationship"> @* add onclick handler *@
+                        <a class="button is-pulled-right is-small is-success" @onclick="@CreateRelationship">
                             <i class="fa fa-plus-circle"></i>
                         </a>
                     </p>
@@ -123,6 +123,37 @@
                                 </p>
                                 <p class="control">
                                     <a class="button is-danger" @onclick="() => { DeleteRelationship(relationship.RelationshipId); }">
+                                        <i class="fa fa-minus-circle"></i>
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    }
+                </div>
+                
+                <div class="panel">
+                    <p class="panel-heading">
+                        Status Updates
+                        <a class="button is-pulled-right is-small is-success" @onclick="@CreateStatusUpdate"> 
+                            <i class="fa fa-plus-circle"></i>
+                        </a>
+                    </p>
+                                                
+                    @foreach (var statusUpdate in Contact.StatusUpdates)
+                    {
+                        <div class="panel-block">
+                            <label class="label">@statusUpdate.Created.ToString("dd.MM.yyyy")</label>
+                            <div class="field has-addons">
+                                <div class="control is-expanded">
+                                    <input class="input" value="@statusUpdate.StatusText" type="text" disabled="disabled">
+                                </div>
+                                <p class="control">
+                                    <a class="button is-warning" @onclick="() => { UpdateStatusUpdate(statusUpdate.StatusUpdateId); }">
+                                        <i class="fa fa-pencil-alt"></i>
+                                    </a>
+                                </p>
+                                <p class="control">
+                                    <a class="button is-danger" @onclick="() => { DeleteStatusUpdate(statusUpdate.StatusUpdateId); }">
                                         <i class="fa fa-minus-circle"></i>
                                     </a>
                                 </p>

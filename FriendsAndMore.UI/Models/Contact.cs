@@ -8,6 +8,7 @@ namespace FriendsAndMore.UI.Models
         {
             EmailAddresses = new List<EmailAddress>();
             Relationships = new List<Relationship>();
+            StatusUpdates = new List<StatusUpdate>();
         }
         
         public int ContactId { get; set; }
@@ -29,6 +30,8 @@ namespace FriendsAndMore.UI.Models
         public List<EmailAddress> EmailAddresses { get; set; }
         
         public List<Relationship> Relationships { get; set; }
+
+        public List<StatusUpdate> StatusUpdates { get; set; }
         
         public string FullName
         {

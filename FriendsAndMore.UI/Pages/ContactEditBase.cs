@@ -19,6 +19,9 @@ namespace FriendsAndMore.UI.Pages
         [Inject]
         public IRelationshipService RelationshipService { get; set; }
 
+        [Inject]
+        public IStatusUpdateService StatusUpdateService { get; set; }
+
         [Parameter]
         public string ContactId { get; set; }
         
@@ -157,6 +160,34 @@ namespace FriendsAndMore.UI.Pages
             StatusClass = "is-success";
             MessageTitle = "Deleted";
             Message = "The relationship is deleted successfully.";
+            Saved = true;
+        }
+        
+        protected void CreateStatusUpdate()
+        {
+            NavigationManager.NavigateTo("/StatusUpdateEdit/" + Contact.ContactId);
+        }
+        
+        protected void UpdateStatusUpdate(int statusUpdateId)
+        {
+            NavigationManager.NavigateTo("/StatusUpdateEdit/" + Contact.ContactId + "/" + statusUpdateId);
+        }
+        
+        protected void DeleteStatusUpdate(int statusUpdateId)
+        {
+            if (statusUpdateId == 0)
+            {
+                StatusClass = "is-danger";
+                MessageTitle = "Oops!";
+                Message = "Something went wrong deleting an status update. Please try again.";
+                Saved = false;
+            }
+
+            StatusUpdateService.DeleteStatusUpdate(statusUpdateId);
+
+            StatusClass = "is-success";
+            MessageTitle = "Deleted";
+            Message = "The status update is deleted successfully.";
             Saved = true;
         }
     }
