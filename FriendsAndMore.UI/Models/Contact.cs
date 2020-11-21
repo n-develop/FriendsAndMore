@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace FriendsAndMore.UI.Models
 {
@@ -32,6 +33,19 @@ namespace FriendsAndMore.UI.Models
         public List<Relationship> Relationships { get; set; }
 
         public List<StatusUpdate> StatusUpdates { get; set; }
+
+        public List<StatusUpdate> Timeline
+        {
+            get
+            {
+                if (StatusUpdates != null && StatusUpdates.Any())
+                {
+                    return StatusUpdates.OrderByDescending(c => c.Created).ToList();
+                }
+
+                return new List<StatusUpdate>();
+            }
+        }
         
         public string FullName
         {

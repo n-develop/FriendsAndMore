@@ -139,7 +139,7 @@
                         </a>
                     </p>
                                                 
-                    @foreach (var statusUpdate in Contact.StatusUpdates)
+                    @foreach (var statusUpdate in Contact.Timeline)
                     {
                         <div class="panel-block">
                             <label class="label">@statusUpdate.Created.ToString("dd.MM.yyyy")</label>
