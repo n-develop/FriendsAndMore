@@ -9,6 +9,8 @@ namespace FriendsAndMore.DataAccess.Entities
         [Key]
         public int Id { get; set; }
 
+        public bool IsFavorite { get; set; }
+
         [Required]
         [StringLength(100, ErrorMessage = "First name is too long.")]
         public string FirstName { get; set; }

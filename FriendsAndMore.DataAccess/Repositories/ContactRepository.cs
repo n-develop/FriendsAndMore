@@ -52,6 +52,7 @@ namespace FriendsAndMore.DataAccess.Repositories
                 foundContact.BusinessTitle = contact.BusinessTitle;
                 foundContact.Tags = contact.Tags;
                 foundContact.Birthday = contact.Birthday;
+                foundContact.IsFavorite = contact.IsFavorite;
 
                 await _dbContext.SaveChangesAsync();
 

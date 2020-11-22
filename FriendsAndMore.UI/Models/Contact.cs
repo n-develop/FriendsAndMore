@@ -16,6 +16,8 @@ namespace FriendsAndMore.UI.Models
         
         public int Id { get; set; }
 
+        public bool IsFavorite { get; set; }
+
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
