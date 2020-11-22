@@ -32,7 +32,8 @@ namespace FriendsAndMore.DataAccess.Repositories
             return await _dbContext.Contacts
                 .Include(c => c.EmailAddresses)
                 .AsSplitQuery()
-                .OrderBy(c => c.Id)
+                .OrderByDescending(c => c.IsFavorite)
+                .ThenBy(c => c.LastName)
                 .AsNoTracking()
                 .Take(20)
                 .ToListAsync();
