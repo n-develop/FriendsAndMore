@@ -16,51 +16,6 @@ else
 {
     foreach (var contact in Contacts)
     {
-        <div class="column is-4">
-            <a href="@($"ContactEdit/{contact.Id}")">
-                <div class="card" id="contact-teaser-@contact.Id" data-contact-id="@contact.Id">
-                    <div class="card-content">
-                        <div class="media">
-                            <div class="media-left">
-                                <figure class="image is-48x48">
-                                    <img src="https://placeimg.com/48/48/any" alt="Profile image">
-                                </figure>
-                            </div>
-                            <div class="media-content">
-                                <span class="is-pulled-right is-4 title favorite" data-contact-id="@contact.Id">
-                                    <i class="fas fa-heart"></i>
-                                </span>
-                                <p class="title is-4">@contact.FullName</p>
-                                @if (contact.EmailAddresses != null && contact.EmailAddresses.Any())
-                                {
-                                    <p class="subtitle is-6">@contact.EmailAddresses.First().Email</p>
-                                }
-                            </div>
-                        </div>
-
-                        <div class="content">
-                            @if (!string.IsNullOrWhiteSpace(contact.Address))
-                            {
-                                <i class="fa fa-map-marked-alt"></i>
-                                <span>@contact.Address</span>
-                                <br/>
-                            }
-                            @if (!string.IsNullOrWhiteSpace(contact.Employer))
-                            {
-                                <i class="fa fa-building"></i>
-                                <span>@contact.Employer</span>
-                                <br/>
-                            }
-                            @if (!string.IsNullOrWhiteSpace(contact.BusinessTitle))
-                            {
-                                <i class="fa fa-briefcase"></i>
-                                <span>@contact.BusinessTitle</span>
-                                <br/>
-                            }
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
+        <ContactTeaser Contact="@contact" />
     }
 }

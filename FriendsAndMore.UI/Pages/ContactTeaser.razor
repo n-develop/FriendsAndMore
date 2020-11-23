@@ -1,0 +1,48 @@
+@inherits ContactTeaserBase
+
+<div class="column is-4">
+    <a href="@($"ContactEdit/{Contact.Id}")">
+        <div class="card" id="contact-teaser-@Contact.Id" data-contact-id="@Contact.Id">
+            <div class="card-content">
+                <div class="media">
+                    <div class="media-left">
+                        <figure class="image is-48x48">
+                            <img src="https://placeimg.com/48/48/any" alt="Profile image">
+                        </figure>
+                    </div>
+                    <div class="media-content">
+                        <span class="is-pulled-right is-4 title favorite" data-contact-id="@Contact.Id">
+                            <i class="fas fa-heart"></i>
+                        </span>
+                        <p class="title is-4">@Contact.FullName</p>
+                        @if (Contact.EmailAddresses != null && Contact.EmailAddresses.Any())
+                        {
+                            <p class="subtitle is-6">@Contact.EmailAddresses.First().Email</p>
+                        }
+                    </div>
+                </div>
+
+                <div class="content">
+                    @if (!string.IsNullOrWhiteSpace(Contact.Address))
+                    {
+                        <i class="fa fa-map-marked-alt"></i>
+                        <span>@Contact.Address</span>
+                        <br/>
+                    }
+                    @if (!string.IsNullOrWhiteSpace(Contact.Employer))
+                    {
+                        <i class="fa fa-building"></i>
+                        <span>@Contact.Employer</span>
+                        <br/>
+                    }
+                    @if (!string.IsNullOrWhiteSpace(Contact.BusinessTitle))
+                    {
+                        <i class="fa fa-briefcase"></i>
+                        <span>@Contact.BusinessTitle</span>
+                        <br/>
+                    }
+                </div>
+            </div>
+        </div>
+    </a>
+</div>
