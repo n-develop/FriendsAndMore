@@ -50,5 +50,10 @@ namespace FriendsAndMore.UI.Services
         {
             await _httpClient.DeleteAsync("api/contact/" + contactId);
         }
+        
+        public async Task ToggleFavorite(int contactId)
+        {
+            await _httpClient.PutAsync("api/Favorite", new StringContent(contactId.ToString(), Encoding.UTF8, "application/json"));
+        }
     }
 }

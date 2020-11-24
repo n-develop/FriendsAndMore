@@ -7,6 +7,9 @@
 
         @if (!Saved)
         {
+            <span class="is-pulled-right is-4 title favorite" @onclick="@ToggleFavorite">
+                <i class="@Contact.FavoriteCss"></i>
+            </span>
             <h1 class="title">Details for @Contact.FullName</h1>
 
             <EditForm Model="@Contact" OnValidSubmit="@HandleValidSubmit" OnInvalidSubmit="@HandleInvalidSubmit">

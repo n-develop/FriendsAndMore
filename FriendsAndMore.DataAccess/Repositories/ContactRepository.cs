@@ -93,5 +93,24 @@ namespace FriendsAndMore.DataAccess.Repositories
             _dbContext.Contacts.Remove(contact);
             await _dbContext.SaveChangesAsync();
         }
+
+        public async Task ToggleFavorite(int contactId)
+        {
+            if (contactId <= 0)
+            {
+                throw new ArgumentException("ContactId must be given", nameof(contactId));
+            }
+            
+            var contact = await _dbContext.Contacts.FindAsync(contactId);
+
+            if (contact == null)
+            {
+                return;
+            }
+
+            contact.IsFavorite = !contact.IsFavorite;
+            
+            await _dbContext.SaveChangesAsync();
+        }
     }
 }

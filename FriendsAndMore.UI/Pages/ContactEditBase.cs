@@ -42,9 +42,16 @@ namespace FriendsAndMore.UI.Pages
             }
         }
         
+        protected async Task ToggleFavorite()
+        {
+            await ContactService.ToggleFavorite(Contact.Id);
+            Contact.IsFavorite = !Contact.IsFavorite;
+            StateHasChanged();
+        }
+        
         protected async Task HandleValidSubmit()
         {
-            if (Contact.Id == 0) //new contact
+            if (Contact.Id == 0)
             {
                 var addedContact = await ContactService.AddContact(Contact);
                 if (addedContact != null)

@@ -18,6 +18,8 @@ namespace FriendsAndMore.UI.Models
 
         public bool IsFavorite { get; set; }
 
+        public string FavoriteCss => IsFavorite ? "fas fa-heart" : "far fa-heart";
+
         public string FirstName { get; set; }
 
         public string LastName { get; set; }

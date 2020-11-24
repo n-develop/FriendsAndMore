@@ -11,8 +11,8 @@
                         </figure>
                     </div>
                     <div class="media-content">
-                        <span class="is-pulled-right is-4 title favorite" data-contact-id="@Contact.Id">
-                            <i class="fas fa-heart"></i>
+                        <span class="is-pulled-right is-4 title favorite">
+                            <i class="@(Contact.IsFavorite ? "fas fa-heart" : "far fa-heart")"></i>
                         </span>
                         <p class="title is-4">@Contact.FullName</p>
                         @if (Contact.EmailAddresses != null && Contact.EmailAddresses.Any())

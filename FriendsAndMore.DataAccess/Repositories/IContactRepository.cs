@@ -11,5 +11,6 @@ namespace FriendsAndMore.DataAccess.Repositories
         Task<Contact> UpdateContact(Contact contact);
         Task<Contact> AddContact(Contact contact);
         Task DeleteContact(int contactId);
+        Task ToggleFavorite(int contactId);
     }
 }
