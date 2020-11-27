@@ -12,5 +12,6 @@ namespace FriendsAndMore.DataAccess.Repositories
         Task<Contact> AddContact(Contact contact);
         Task DeleteContact(int contactId);
         Task ToggleFavorite(int contactId);
+        Task<IEnumerable<Contact>> SearchContacts(string query);
     }
 }
