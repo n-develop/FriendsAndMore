@@ -115,14 +115,14 @@ namespace FriendsAndMore.DataAccess.Repositories
 
         public async Task<IEnumerable<Contact>> SearchContacts(string query)
         {
-            var filtered = _dbContext.Contacts
+            var filtered = await _dbContext.Contacts
                 .Include(c => c.EmailAddresses)
                 .Where(c => EF.Functions.Like(c.LastName, $"%{query}%")
                             || EF.Functions.Like(c.MiddleName,$"%{query}%")
                             || EF.Functions.Like(c.FirstName,$"%{query}%")
                             || !string.IsNullOrEmpty(c.Tags) 
                             && EF.Functions.Like(c.Tags, $"%{query}%"))
-                .ToList();
+                .ToListAsync();
             return filtered;
         }
     }
