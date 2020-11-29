@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
+using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Threading.Tasks;
 using FriendsAndMore.UI.Models;
@@ -54,6 +55,12 @@ namespace FriendsAndMore.UI.Services
         public async Task ToggleFavorite(int contactId)
         {
             await _httpClient.PutAsync("api/Favorite", new StringContent(contactId.ToString(), Encoding.UTF8, "application/json"));
+        }
+
+        public async Task<IEnumerable<Contact>> SearchContact(string searchTerm)
+        {
+            var result = await _httpClient.GetStringAsync("api/search/" + UrlEncoder.Default.Encode(searchTerm));
+            return JsonSerializer.Deserialize<IEnumerable<Contact>>(result, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
         }
     }
 }

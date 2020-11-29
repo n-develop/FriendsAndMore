@@ -2,7 +2,7 @@
 
 @inherits IndexBase
 
-@if (Contacts == null)
+@if (AppState.Contacts == null)
 {
     <div class="column">
         <div class="box">
@@ -13,7 +13,7 @@
 }
 else
 {
-    foreach (var contact in Contacts)
+    foreach (var contact in AppState.Contacts)
     {
         <ContactTeaser Contact="@contact" />
     }

@@ -1,5 +1,5 @@
 using System;
-using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using FriendsAndMore.UI.Models;
@@ -8,12 +8,13 @@ using Microsoft.AspNetCore.Components;
 
 namespace FriendsAndMore.UI.Pages
 {
-    public class IndexBase : ComponentBase
+    public class IndexBase : ComponentBase, IDisposable
     {
-        protected IEnumerable<Contact> Contacts;
-
         [Inject]
         private IContactService ContactService { get; set; }
+
+        [Inject] 
+        protected ApplicationState AppState { get; set; }
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
@@ -28,7 +29,11 @@ namespace FriendsAndMore.UI.Pages
         {
             try
             {
-                Contacts = await ContactService.GetAllContacts();
+                var allContacts = await ContactService.GetAllContacts();
+                InvokeAsync(() =>
+                {
+                    AppState.SetContacts(allContacts.ToList());
+                });
             }
             catch (Exception e)
             {
@@ -43,6 +48,16 @@ namespace FriendsAndMore.UI.Pages
                     throw;    
                 }
             }
+        }
+
+        protected override void OnInitialized()
+        {
+            AppState.OnChange += StateHasChanged;
+        }
+
+        public void Dispose()
+        {
+            AppState.OnChange -= StateHasChanged;
         }
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Net.Http;
+using FriendsAndMore.UI.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -32,6 +33,7 @@ namespace FriendsAndMore.UI
 
             services.AddScoped<IContactService, ContactService>();
             services.AddScoped<IEntityDataService, EntityDataService>();
+            services.AddScoped<ApplicationState>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

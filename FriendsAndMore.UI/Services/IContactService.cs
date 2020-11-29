@@ -12,5 +12,6 @@ namespace FriendsAndMore.UI.Services
         Task UpdateContact(Contact contact);
         Task DeleteContact(int contactId);
         Task ToggleFavorite(int contactId);
+        Task<IEnumerable<Contact>> SearchContact(string searchTerm);
     }
 }
