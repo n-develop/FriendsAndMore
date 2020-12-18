@@ -27,7 +27,7 @@ namespace FriendsAndMore.UI
             services.AddServerSideBlazor();
             services.AddScoped(s =>
             {
-                var client = new HttpClient { BaseAddress = new Uri("https://localhost:5001/") }; 
+                var client = new HttpClient { BaseAddress = Configuration.GetServiceUri("friendsandmore-api") }; 
                 return client;
             });
 
