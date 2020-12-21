@@ -1,0 +1,19 @@
+# tye application configuration file
+# read all about it at https://github.com/dotnet/tye
+#
+# when you've given us a try, we'd love to know what you think:
+#    https://aka.ms/AA7q20u
+#
+name: friendsandmore
+services:
+- name: friendsandmore-ui
+  project: FriendsAndMore.UI/FriendsAndMore.UI.csproj
+- name: friendsandmore-api
+  project: FriendsAndMore.API/FriendsAndMore.API.csproj
+ingress:
+  - name: ingress
+    bindings:
+      - port: 8080
+    rules:
+      - path: /
+        service: friendsandmore-ui
