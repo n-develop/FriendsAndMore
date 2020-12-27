@@ -3,300 +3,301 @@
 @inherits ContactEditBase
 
 <section class="column">
-    <div class="box contact-edit">
+<div class="box contact-edit">
 
-        @if (!Saved)
-        {
-            <span class="is-pulled-right is-4 title favorite" @onclick="@ToggleFavorite">
-                <i class="@Contact.FavoriteCss"></i>
+@if (!Saved)
+{
+    <span class="is-pulled-right is-4 title favorite" @onclick="@ToggleFavorite">
+        <i class="@Contact.FavoriteCss"></i>
+    </span>
+    <h1 class="title">Details for @Contact.FullName</h1>
+
+    <EditForm Model="@Contact" OnValidSubmit="@HandleValidSubmit" OnInvalidSubmit="@HandleInvalidSubmit">
+
+    <DataAnnotationsValidator/>
+    <ValidationSummary/>
+
+    <div class="field">
+        <label for="firstName" class="label">First name: </label>
+        <div class="control">
+            <InputText id="firstName" class="input" @bind-Value="@Contact.FirstName" placeholder="Enter first name"></InputText>
+            <ValidationMessage class="" For="@(() => Contact.FirstName)"/>
+        </div>
+    </div>
+    <div class="field">
+        <label for="middleName" class="label">Middle name: </label>
+        <div class="control">
+            <InputText id="middleName" class="input" @bind-Value="@Contact.MiddleName" placeholder="Enter middle name"></InputText>
+            <ValidationMessage class="" For="@(() => Contact.MiddleName)"/>
+        </div>
+    </div>
+    <div class="field">
+        <label for="lastName" class="label">Last name:</label>
+        <div class="control">
+            <InputText id="lastName" class="input" @bind-Value="@Contact.LastName" placeholder="Enter last name"></InputText>
+            <ValidationMessage class="" For="@(() => Contact.LastName)"/>
+        </div>
+    </div>
+
+    <div class="field">
+        <label for="address" class="label">Address: </label>
+        <div class="control">
+            <InputTextArea id="address" class="textarea" @bind-Value="@Contact.Address" placeholder="Address"></InputTextArea>
+            <ValidationMessage class="" For="@(() => Contact.Address)"/>
+        </div>
+    </div>
+
+    <div class="field">
+        <label for="birthday" class="label">Birthday: </label>
+        <div class="control has-icons-left">
+            <InputDate id="birthday" class="input" @bind-Value="@Contact.Birthday"></InputDate>
+            <span class="icon is-small is-left">
+                <i class="fa fa-birthday-cake"></i>
             </span>
-            <h1 class="title">Details for @Contact.FullName</h1>
+            <ValidationMessage class="" For="@(() => Contact.Birthday)"/>
+        </div>
+    </div>
 
-            <EditForm Model="@Contact" OnValidSubmit="@HandleValidSubmit" OnInvalidSubmit="@HandleInvalidSubmit">
+    <div class="field">
+        <label for="employer" class="label">Employer: </label>
+        <div class="control has-icons-left">
+            <InputText id="employer" class="input" @bind-Value="@Contact.Employer" placeholder="Employer"></InputText>
+            <span class="icon is-small is-left">
+                <i class="fa fa-building"></i>
+            </span>
+            <ValidationMessage class="" For="@(() => Contact.Employer)"/>
+        </div>
+    </div>
+    <div class="field">
+        <label for="businessTitle" class="label">BusinessTitle: </label>
+        <div class="control has-icons-left">
+            <InputText id="businessTitle" class="input" @bind-Value="@Contact.BusinessTitle" placeholder="Business Title"></InputText>
+            <span class="icon is-small is-left">
+                <i class="fa fa-briefcase"></i>
+            </span>
+            <ValidationMessage class="" For="@(() => Contact.BusinessTitle)"/>
+        </div>
+    </div>
 
-                <DataAnnotationsValidator/>
-                <ValidationSummary/>
-
-                <div class="field">
-                    <label for="firstName" class="label">First name: </label>
-                    <div class="control">
-                        <InputText id="firstName" class="input" @bind-Value="@Contact.FirstName" placeholder="Enter first name"></InputText>
-                        <ValidationMessage class="" For="@(() => Contact.FirstName)"/>
-                    </div>
-                </div>
-                <div class="field">
-                    <label for="middleName" class="label">Middle name: </label>
-                    <div class="control">
-                        <InputText id="middleName" class="input" @bind-Value="@Contact.MiddleName" placeholder="Enter middle name"></InputText>
-                        <ValidationMessage class="" For="@(() => Contact.MiddleName)"/>
-                    </div>
-                </div>
-                <div class="field">
-                    <label for="lastName" class="label">Last name:</label>
-                    <div class="control">
-                        <InputText id="lastName" class="input" @bind-Value="@Contact.LastName" placeholder="Enter last name"></InputText>
-                        <ValidationMessage class="" For="@(() => Contact.LastName)"/>
-                    </div>
-                </div>
-
-                <div class="field">
-                    <label for="address" class="label">Address: </label>
-                    <div class="control">
-                        <InputTextArea id="address" class="textarea" @bind-Value="@Contact.Address" placeholder="Address"></InputTextArea>
-                        <ValidationMessage class="" For="@(() => Contact.Address)"/>
-                    </div>
-                </div>
-
-                <div class="field">
-                    <label for="birthday" class="label">Birthday: </label>
-                    <div class="control has-icons-left">
-                        <InputDate id="birthday" class="input" @bind-Value="@Contact.Birthday"></InputDate>
-                        <span class="icon is-small is-left">
-                            <i class="fa fa-birthday-cake"></i>
-                        </span>
-                        <ValidationMessage class="" For="@(() => Contact.Birthday)"/>
-                    </div>
-                </div>
-                
-                <div class="field">
-                    <label for="employer" class="label">Employer: </label>
-                    <div class="control has-icons-left">
-                        <InputText id="employer" class="input" @bind-Value="@Contact.Employer" placeholder="Employer"></InputText>
-                        <span class="icon is-small is-left">
-                            <i class="fa fa-building"></i>
-                        </span>
-                        <ValidationMessage class="" For="@(() => Contact.Employer)"/>
-                    </div>
-                </div>
-                <div class="field">
-                    <label for="businessTitle" class="label">BusinessTitle: </label>
-                    <div class="control has-icons-left">
-                        <InputText id="businessTitle" class="input" @bind-Value="@Contact.BusinessTitle" placeholder="Business Title"></InputText>
-                        <span class="icon is-small is-left">
-                            <i class="fa fa-briefcase"></i>
-                        </span>
-                        <ValidationMessage class="" For="@(() => Contact.BusinessTitle)"/>
-                    </div>
-                </div>
-                
-                <div class="panel">
-                    <p class="panel-heading">
-                        Emails
-                        @if (Contact.Id != 0)
-                        {
-                            <a class="button is-pulled-right is-small is-success" @onclick="@CreateEmailAddress">
-                                <i class="fa fa-plus-circle"></i>
-                            </a>    
-                        }
-                    </p>
-                    @if (Contact.Id == 0)
-                    {
-                        <div class="panel-block">
-                            You have to save the contact before you can add emails
-                        </div>
-                    }
-                    else
-                    {
-                        foreach (var email in Contact.EmailAddresses)
-                        {
-                            <div class="panel-block">
-                                <label class="label">@email.Type</label>
-                                <div class="field has-addons">
-                                    <p class="control">
-                                        <a class="button is-info" href="mailto:@email.Email">
-                                            <i class="fa fa-envelope"></i>
-                                        </a>
-                                    </p>
-                                    <div class="control is-expanded">
-                                        <input class="input" value="@email.Email" type="email" placeholder="email@@domoain.com" disabled="disabled">
-                                    </div>
-                                    <p class="control">
-                                        <a class="button is-warning" @onclick="() => { UpdateEmailAddress(email.Id); }">
-                                            <i class="fa fa-pencil-alt"></i>
-                                        </a>
-                                    </p>
-                                    <p class="control">
-                                        <a class="button is-danger" @onclick="() => { DeleteEmailAddress(email.Id); }">
-                                            <i class="fa fa-minus-circle"></i>
-                                        </a>
-                                    </p>
-                                </div>
-                            </div>
-                        }
-                    }
-                </div>
-                
-                <div class="panel">
-                    <p class="panel-heading">
-                        Telephone Numbers
-                        @if (Contact.Id != 0)
-                        {
-                            <a class="button is-pulled-right is-small is-success" @onclick="@CreateTelephoneNumber">
-                                <i class="fa fa-plus-circle"></i>
-                            </a>
-                        }
-                    </p>
-                             
-                    @if (Contact.Id == 0)
-                    {
-                        <div class="panel-block">
-                            You have to save the contact before you can add telephone numbers
-                        </div>
-                    }
-                    else
-                    {
-                        foreach (var telephone in Contact.TelephoneNumbers)
-                        {
-                            <div class="panel-block">
-                                <label class="label">@telephone.Type</label>
-                                <div class="field has-addons">
-                                    <p class="control">
-                                        <a class="button is-info" href="tel:@telephone.TelephoneNormalized">
-                                            <i class="fa fa-phone"></i>
-                                        </a>
-                                    </p>
-                                    <div class="control is-expanded">
-                                        <input class="input" value="@telephone.Telephone" type="tel" placeholder="555 - 12345" disabled="disabled">
-                                    </div>
-                                    <p class="control">
-                                        <a class="button is-warning" @onclick="() => { UpdateTelephoneNumber(telephone.Id); }">
-                                            <i class="fa fa-pencil-alt"></i>
-                                        </a>
-                                    </p>
-                                    <p class="control">
-                                        <a class="button is-danger" @onclick="() => { DeleteTelephoneNumber(telephone.Id); }">
-                                            <i class="fa fa-minus-circle"></i>
-                                        </a>
-                                    </p>
-                                </div>
-                            </div>
-                        }
-                    }                        
-                </div>
-                
-                <div class="panel">
-                    <p class="panel-heading">
-                        Relationships
-                    @if (Contact.Id != 0)
-                    {
-                        <a class="button is-pulled-right is-small is-success" @onclick="@CreateRelationship">
-                            <i class="fa fa-plus-circle"></i>
-                        </a>
-                    }
-                    </p>
-                    @if (Contact.Id == 0)
-                    {
-                        <div class="panel-block">
-                            You have to save the contact before you can add relationships
-                        </div>
-                    }
-                    else
-                    {
-                        foreach (var relationship in Contact.Relationships)
-                        {
-                            <div class="panel-block">
-                                <label class="label">@relationship.Type</label>
-                                <div class="field has-addons">
-                                    <p class="control">
-                                        <a class="button is-info"> @* a click here should execute a search for the name *@
-                                            <i class="fa fa-search"></i>
-                                        </a>
-                                    </p>
-                                    <div class="control is-expanded">
-                                        <input class="input" value="@relationship.Person" type="text" placeholder="e.g. Jamie Oliver" disabled="disabled">
-                                    </div>
-                                    <p class="control">
-                                        <a class="button is-warning" @onclick="() => { UpdateRelationship(relationship.Id); }">
-                                            <i class="fa fa-pencil-alt"></i>
-                                        </a>
-                                    </p>
-                                    <p class="control">
-                                        <a class="button is-danger" @onclick="() => { DeleteRelationship(relationship.Id); }">
-                                            <i class="fa fa-minus-circle"></i>
-                                        </a>
-                                    </p>
-                                </div>
-                            </div>
-                        }
-                    }                        
-                </div>
-                
-                <div class="panel">
-                    <p class="panel-heading">
-                        Status Updates
-                        @if (Contact.Id != 0)
-                        {
-                            <a class="button is-pulled-right is-small is-success" @onclick="@CreateStatusUpdate">
-                                <i class="fa fa-plus-circle"></i>
-                            </a>
-                        }                            
-                    </p>
-                    @if (Contact.Id == 0)
-                    {
-                        <div class="panel-block">
-                            You have to save the contact before you can add status updates
-                        </div>
-                    }
-                    else
-                    {
-                        foreach (var statusUpdate in Contact.Timeline)
-                        {
-                            <div class="panel-block">
-                                <label class="label">@statusUpdate.Created.ToString("dd.MM.yyyy")</label>
-                                <div class="field has-addons">
-                                    <div class="control is-expanded">
-                                        <input class="input" value="@statusUpdate.StatusText" type="text" disabled="disabled">
-                                    </div>
-                                    <p class="control">
-                                        <a class="button is-warning" @onclick="() => { UpdateStatusUpdate(statusUpdate.Id); }">
-                                            <i class="fa fa-pencil-alt"></i>
-                                        </a>
-                                    </p>
-                                    <p class="control">
-                                        <a class="button is-danger" @onclick="() => { DeleteStatusUpdate(statusUpdate.Id); }">
-                                            <i class="fa fa-minus-circle"></i>
-                                        </a>
-                                    </p>
-                                </div>
-                            </div>
-                        }
-                    }
-                </div>
-
-                <div class="field">
-                    <label for="tags" class="label">Tags: </label>
-                    <div class="control has-icons-left">
-                        <InputText id="tags" class="input" @bind-Value="@Contact.Tags" placeholder="football, family"></InputText>
-                        <span class="icon is-small is-left">
-                            <i class="fa fa-tag"></i>
-                        </span>
-                        <ValidationMessage class="" For="@(() => Contact.Tags)"/>
-                    </div>
-                </div>
-                
-                <div class="buttons">
-                    <button type="submit" class="button is-info is-medium">Save</button>
-                    <button class="button is-outlined is-info is-medium" @onclick="@NavigateToOverview">Cancel</button>
-                    @if (Contact.Id > 0)
-                    {
-                        <button class="button is-danger is-medium" @onclick="@DeleteContact">
-                            Delete
-                        </button>
-                    }
-                </div>
-            </EditForm>
+    <div class="panel">
+        <p class="panel-heading">
+            Emails
+            @if (Contact.Id != 0)
+            {
+                <a class="button is-pulled-right is-small is-success" @onclick="@CreateEmailAddress">
+                    <i class="fa fa-plus-circle"></i>
+                </a>
+            }
+        </p>
+        @if (Contact.Id == 0)
+        {
+            <div class="panel-block">
+                You have to save the contact before you can add emails
+            </div>
         }
         else
         {
-            <article class="message @StatusClass">
-                <div class="message-header">
-                    <p>@MessageTitle</p>
+            foreach (var email in Contact.EmailAddresses)
+            {
+                <div class="panel-block">
+                    <label class="label">@email.Type</label>
+                    <div class="field has-addons">
+                        <p class="control">
+                            <a class="button is-info" href="mailto:@email.Email">
+                                <i class="fa fa-envelope"></i>
+                            </a>
+                        </p>
+                        <div class="control is-expanded">
+                            <input class="input" value="@email.Email" type="email" placeholder="email@@domoain.com" disabled="disabled">
+                        </div>
+                        <p class="control">
+                            <a class="button is-warning" @onclick="() => { UpdateEmailAddress(email.Id); }">
+                                <i class="fa fa-pencil-alt"></i>
+                            </a>
+                        </p>
+                        <p class="control">
+                            <a class="button is-danger" @onclick="() => { DeleteEmailAddress(email.Id); }">
+                                <i class="fa fa-minus-circle"></i>
+                            </a>
+                        </p>
+                    </div>
                 </div>
-                <div class="message-body">
-                    @Message
-                </div>
-            </article>
-            <a class="button is-info is-outlined" @onclick="@NavigateToOverview">Back to overview</a>
+            }
         }
     </div>
+
+    <div class="panel">
+        <p class="panel-heading">
+            Telephone Numbers
+            @if (Contact.Id != 0)
+            {
+                <a class="button is-pulled-right is-small is-success" @onclick="@CreateTelephoneNumber">
+                    <i class="fa fa-plus-circle"></i>
+                </a>
+            }
+        </p>
+
+        @if (Contact.Id == 0)
+        {
+            <div class="panel-block">
+                You have to save the contact before you can add telephone numbers
+            </div>
+        }
+        else
+        {
+            foreach (var telephone in Contact.TelephoneNumbers)
+            {
+                <div class="panel-block">
+                    <label class="label">@telephone.Type</label>
+                    <div class="field has-addons">
+                        <p class="control">
+                            <a class="button is-info" href="tel:@telephone.TelephoneNormalized">
+                                <i class="fa fa-phone"></i>
+                            </a>
+                        </p>
+                        <div class="control is-expanded">
+                            <input class="input" value="@telephone.Telephone" type="tel" placeholder="555 - 12345" disabled="disabled">
+                        </div>
+                        <p class="control">
+                            <a class="button is-warning" @onclick="() => { UpdateTelephoneNumber(telephone.Id); }">
+                                <i class="fa fa-pencil-alt"></i>
+                            </a>
+                        </p>
+                        <p class="control">
+                            <a class="button is-danger" @onclick="() => { DeleteTelephoneNumber(telephone.Id); }">
+                                <i class="fa fa-minus-circle"></i>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+
+    <div class="panel">
+        <p class="panel-heading">
+            Relationships
+            @if (Contact.Id != 0)
+            {
+                <a class="button is-pulled-right is-small is-success" @onclick="@CreateRelationship">
+                    <i class="fa fa-plus-circle"></i>
+                </a>
+            }
+        </p>
+        @if (Contact.Id == 0)
+        {
+            <div class="panel-block">
+                You have to save the contact before you can add relationships
+            </div>
+        }
+        else
+        {
+            foreach (var relationship in Contact.Relationships)
+            {
+                <div class="panel-block">
+                    <label class="label">@relationship.Type</label>
+                    <div class="field has-addons">
+                        <p class="control">
+                            <a class="button is-info">
+                                @* a click here should execute a search for the name *@
+                                <i class="fa fa-search"></i>
+                            </a>
+                        </p>
+                        <div class="control is-expanded">
+                            <input class="input" value="@relationship.Person" type="text" placeholder="e.g. Jamie Oliver" disabled="disabled">
+                        </div>
+                        <p class="control">
+                            <a class="button is-warning" @onclick="() => { UpdateRelationship(relationship.Id); }">
+                                <i class="fa fa-pencil-alt"></i>
+                            </a>
+                        </p>
+                        <p class="control">
+                            <a class="button is-danger" @onclick="() => { DeleteRelationship(relationship.Id); }">
+                                <i class="fa fa-minus-circle"></i>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+
+    <div class="panel">
+        <p class="panel-heading">
+            Status Updates
+            @if (Contact.Id != 0)
+            {
+                <a class="button is-pulled-right is-small is-success" @onclick="@CreateStatusUpdate">
+                    <i class="fa fa-plus-circle"></i>
+                </a>
+            }
+        </p>
+        @if (Contact.Id == 0)
+        {
+            <div class="panel-block">
+                You have to save the contact before you can add status updates
+            </div>
+        }
+        else
+        {
+            foreach (var statusUpdate in Contact.Timeline)
+            {
+                <div class="panel-block">
+                    <label class="label">@statusUpdate.Created.ToString("dd.MM.yyyy")</label>
+                    <div class="field has-addons">
+                        <div class="control is-expanded">
+                            <input class="input" value="@statusUpdate.StatusText" type="text" disabled="disabled">
+                        </div>
+                        <p class="control">
+                            <a class="button is-warning" @onclick="() => { UpdateStatusUpdate(statusUpdate.Id); }">
+                                <i class="fa fa-pencil-alt"></i>
+                            </a>
+                        </p>
+                        <p class="control">
+                            <a class="button is-danger" @onclick="() => { DeleteStatusUpdate(statusUpdate.Id); }">
+                                <i class="fa fa-minus-circle"></i>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+
+    <div class="field">
+        <label for="tags" class="label">Tags: </label>
+        <div class="control has-icons-left">
+            <InputText id="tags" class="input" @bind-Value="@Contact.Tags" placeholder="football, family"></InputText>
+            <span class="icon is-small is-left">
+                <i class="fa fa-tag"></i>
+            </span>
+            <ValidationMessage class="" For="@(() => Contact.Tags)"/>
+        </div>
+    </div>
+
+    <div class="buttons">
+        <button type="submit" class="button is-info is-medium">Save</button>
+        <button class="button is-outlined is-info is-medium" @onclick="@NavigateToOverview">Cancel</button>
+        @if (Contact.Id > 0)
+        {
+            <button class="button is-danger is-medium" @onclick="@DeleteContact">
+                Delete
+            </button>
+        }
+    </div>
+    </EditForm>
+}
+else
+{
+    <article class="message @StatusClass">
+        <div class="message-header">
+            <p>@MessageTitle</p>
+        </div>
+        <div class="message-body">
+            @Message
+        </div>
+    </article>
+    <a class="button is-info is-outlined" @onclick="@NavigateToOverview">Back to overview</a>
+}
+</div>
 </section>
